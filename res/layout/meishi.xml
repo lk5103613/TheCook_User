@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faf2f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="#C30D22" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="看看美食"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="40dip"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="back"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="8dip"
+                android:layout_height="15dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="40dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:onClick="jumpToCar"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="25dip"
+                android:layout_height="20dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/tab_car" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dip"
+            android:background="@drawable/meishi_banner" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dip"
+                android:layout_alignParentBottom="true"
+                android:background="#aa000000"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="网罗全城美食，美味即可享有..."
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="5dip"
+                    android:layout_height="5dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/meishi_yuan" />
+
+                <ImageView
+                    android:layout_width="5dip"
+                    android:layout_height="5dip"
+                    android:layout_marginLeft="2dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/meishi_yuan" />
+
+                <ImageView
+                    android:layout_width="5dip"
+                    android:layout_height="5dip"
+                    android:layout_marginLeft="2dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/meishi_yuan" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.like.customeview.pulldown.PullToRefreshListView
+            android:id="@+id/ms_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        
+    </LinearLayout>
+
+</LinearLayout>

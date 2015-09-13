@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">大厨家到</string>
+    <string name="title_activity_country_choise">CountryChoiseActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_tao_can_detail">TaoCanDetailActivity</string>
+    <string name="title_activity_my_order">MyOrderActivity</string>
+    <string name="title_activity_my_score">MyScoreActivity</string>
+    <string name="title_activity_my_card">MyCardActivity</string>
+    <string name="title_activity_score_list">ScoreListActivity</string>
+    <string name="title_activity_invite">InviteActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+
+</resources>

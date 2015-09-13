@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="tab_bg">#C30D22</color>
+    <color name="taocan_bg">#E3E3E3</color>
+    <color name="tab_bg_sel">#ffffff</color>
+    <color name="money_color">#f39800</color>
+    <color name="red">#BF4722</color>
+    <color name="light_gray">#bbbbbb</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="dc_top_menu_bg">#e3e3e3</color>
+    <color name="dc_top_menu_text_color">#646464</color>
+    <color name="dc_top_menu_text_selected_color">#bf4722</color>
+    <color name="dc_item_divider">#c0c0c0</color>
+    <color name="dc_detail_text_color">#b8b8b8</color>
+    <color name="choise_color_1">#cecece</color>
+    <color name="choise_color_2">#999999</color>
+    <color name="choise_color_3">#616161</color>
+    <color name="choise_color_4">#3a3a3a</color>
+    <color name="pj_tip_bg">#F43B39</color>
+    <color name="ll_gray">#F3F4F6</color>
+    <color name="order_pop_color_1">@color/white</color>
+    <color name="order_pop_color_2">#AAAAAA</color>
+    <color name="order_pop_color_3">#636363</color>
+    <color name="click_bg_color">#90BCBCBC</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="order_text_color_blue">#31A5C0</color>
+    <color name="order_text_color_grey">#CCCCCC</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="btn_grey_text_color">#ff7783</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+</resources>

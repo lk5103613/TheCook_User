@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/taocan_bg"
+    android:orientation="vertical" >
+
+    <!-- toolbar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="#C30D22" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="套餐"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="40dip"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:clickable="true"
+            android:onClick="back"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="8dip"
+                android:layout_height="15dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/back" />
+        </LinearLayout>
+    </RelativeLayout>
+    
+    <com.like.customeview.pulldown.PullToRefreshListView
+        android:id="@+id/taocan_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="10dp"
+        android:divider="@color/taocan_bg"
+        android:scrollbars="none"
+        android:dividerHeight="6dp"/>
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:text="拨打电 400-000-000 赶紧预定吧 ~~"/>
+
+</LinearLayout>

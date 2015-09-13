@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faf2f0"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="#C30D22">
+
+        <LinearLayout
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dip">
+
+            <ImageView
+                android:layout_width="13dip"
+                android:layout_height="20dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dip"
+                android:paddingRight="3dp"
+                android:text="宁波"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/call"
+            android:layout_width="25dip"
+            android:layout_height="25dip"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/kefu" />
+
+        <LinearLayout
+            android:id="@+id/scan"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:paddingRight="10dip"
+            android:paddingLeft="10dp">
+
+            <ImageView
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/saoma" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="10dp">
+                    
+                    <com.like.customeview.HackyViewPager 
+                        android:id="@+id/view_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/taocan"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:background="@drawable/home_title_bg"
+                    android:layout_marginBottom="10dp">
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/jiushui"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/jiushui">
+                    
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/chushi"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/chushi">
+                    <!-- <RelativeLayout
+                        android:layout_width="70dip"
+                        android:layout_height="70dip"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/home_title_txt_bg">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="厨师"
+                            android:textColor="#bf4722"
+                            android:textSize="18sp" />
+                    </RelativeLayout> -->
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/zixun"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/zixun">
+                    <!-- <RelativeLayout
+                        android:layout_width="70dip"
+                        android:layout_height="70dip"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/home_title_txt_bg">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="资讯"
+                            android:textColor="#bf4722"
+                            android:textSize="18sp" />
+                    </RelativeLayout> -->
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/daimai"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/daimai">
+                    <!-- <RelativeLayout
+                        android:layout_width="70dip"
+                        android:layout_height="70dip"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/home_title_txt_bg">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="代买"
+                            android:textColor="#bf4722"
+                            android:textSize="18sp" />
+                    </RelativeLayout> -->
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/callLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#66000000"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10dip">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="客服电话："
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="400-6754364"
+                        android:textColor="#cc3333"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/call_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="5dip"
+                    android:background="@drawable/home_call"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="立即拨打"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginBottom="10dp"
+                    android:text="大厨配菜"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- <View
+                android:id="@+id/callNull"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" /> -->
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

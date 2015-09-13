@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faf2f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="#C30D22" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="看看美食"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="40dip"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="8dip"
+                android:layout_height="15dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/back" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:onClick="toCar"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/tab_car"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="220dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/meishi_info_banner" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingBottom="10dip"
+                android:paddingLeft="16dip"
+                android:paddingRight="16dip"
+                android:paddingTop="10dip" >
+
+                <TextView
+                    android:id="@+id/package_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="美味仙贝套餐"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingTop="3dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥"
+                        android:textColor="@color/money_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="96"
+                        android:textColor="@color/money_color"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"
+                        android:textColor="@color/money_color"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已售"
+                        android:textColor="#bbbbbb"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="300"
+                        android:textColor="@color/red"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="份"
+                        android:textColor="#bbbbbb"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="餐具选择："
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/canju_select_bg"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="中式"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/canju_unselect_bg"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="西式"
+                        android:textColor="@color/light_gray" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:background="#c8c6c6" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dip"
+                android:background="@color/ll_gray"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="须知"
+                    android:textColor="#878787"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="详情"
+                    android:textColor="#fe7a51"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="大厨"
+                    android:textColor="#878787"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
+
+                    <RelativeLayout
+                        android:layout_width="45dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_centerHorizontal="true"
+                            android:text="评价"
+                            android:textColor="#878787"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/pingjia_tip_bg"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            android:textSize="8sp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:background="#c8c6c6" />
+            
+            <!-- 选项卡 end -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="10dip" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:text="本单详情"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#d1d1d1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="套餐内容"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="3dp"
+                    android:background="#eeeeee"/>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="6">
+
+                    <TableRow
+                        android:layout_gravity="center">
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/th_bg_right"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:text="超值10人\r\n经典套餐"/>
+                        <TextView
+                            android:layout_weight="2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/th_bg_right"
+                            android:textColor="@color/white"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:gravity="center"
+                            android:text="包含菜品"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/th_bg_right"
+                            android:textColor="@color/white"
+                            android:padding="5dp"
+                            android:gravity="center"
+                            android:text="单价"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/th_bg_right"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:text="数量/规格"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/white"
+                            android:background="#bf4722"
+                            android:gravity="center"
+                            android:text="小计"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/td_bg"
+                            android:textColor="#444444"
+                            android:gravity="center"
+                            android:text="热菜 "/>
+                        <TableLayout android:layout_weight="5"
+                            android:stretchColumns="5"
+                            android:layout_span="5">
+                            <TableRow>
+                                <TextView android:layout_weight="2"
+                                    android:gravity="left"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="烧鸭啤酒"/>
+                                <TextView android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:gravity="center"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                                <TextView android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:gravity="center"
+                                    android:textColor="#444444"
+                                    android:text="一份"/>
+                                <TextView android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:gravity="center"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                            </TableRow>
+                            <TableRow>
+                                <TextView android:layout_weight="2"
+                                    android:gravity="left"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="烧鸭啤酒"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="一份"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                            </TableRow>
+                            <TableRow>
+                                <TextView android:layout_weight="2"
+                                    android:gravity="left"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="烧鸭啤酒"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="一份"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                            </TableRow>
+                        </TableLayout>
+                    </TableRow>
+                    <TableRow>
+                        <TextView android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/td_bg"
+                            android:textColor="#444444"
+                            android:gravity="center"
+                            android:text="冷菜 "/>
+                        <TableLayout android:layout_weight="5"
+                            android:layout_span="4">
+                            <TableRow>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="left"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="蒜排黄瓜"/>
+                                <TextView android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:gravity="center"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                                <TextView android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:gravity="center"
+                                    android:textColor="#444444"
+                                    android:text="一份"/>
+                                <TextView android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:gravity="center"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                            </TableRow>
+                            <TableRow>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="left"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="凉拌海蜇"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="一份"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                            </TableRow>
+                            <TableRow>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="left"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="石斧金牌或蟹"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="一份"/>
+                                <TextView android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:background="@drawable/td_bg_bottom"
+                                    android:textColor="#444444"
+                                    android:text="￥26"/>
+                            </TableRow>
+
+                        </TableLayout>
+                    </TableRow>
+                    <TableRow android:layout_weight="6">
+                        <TextView android:layout_weight="4"
+                            android:layout_width="match_parent"
+                            android:gravity="right"
+                            android:text="菜品信息"
+                            android:textColor="#444444"/>
+                        <TextView android:layout_weight="2"
+                            android:textColor="#c3562f"
+                            android:layout_width="match_parent"
+                            android:gravity="right"
+                            android:text="总计: 3000元"/>
+                    </TableRow>
+                </TableLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="套餐详情"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="3dp"
+                    android:background="#eeeeee"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="烧鸭啤酒" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/gdsytc"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="美味仙贝" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/mwxbtc"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="商家介绍"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="3dp"
+                    android:background="#eeeeee"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:text="本单详情"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#d1d1d1"/>
+
+                <LinearLayout
+                    android:id="@+id/reply_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="全部"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="#eeeeee"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="晒单评价"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="#f3f3f3"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="只看低分"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:background="#f8f8f8"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <com.like.customeview.RoundImageView
+                        android:id="@+id/reply_icon_1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/reply1"/>
+
+                    <TextView
+                        android:id="@+id/reply_name_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_toRightOf="@id/reply_icon_1"
+                        android:text="anjuli"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/reply_name_1"
+                        android:layout_toRightOf="@id/reply_icon_1"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star"
+                            android:layout_marginRight="10dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2015-8-18"
+                        android:textColor="#bbbbbb"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/reply_icon_1"
+                        android:layout_marginBottom="10dp"
+                        android:text="父母回家的时候。定了他家的厨师过来炒菜，非常速度，而且炒的特别好吃，下次聚会，还叫他家。。。"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#d3d3d3" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <com.like.customeview.RoundImageView
+                        android:id="@+id/reply_icon_2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/reply1"/>
+
+                    <TextView
+                        android:id="@+id/reply_name_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_toRightOf="@id/reply_icon_2"
+                        android:text="anjuli"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/reply_name_2"
+                        android:layout_toRightOf="@id/reply_icon_2"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_select"
+                            android:layout_marginRight="5dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star"
+                            android:layout_marginRight="10dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2015-8-18"
+                        android:textColor="#bbbbbb"/>
+
+                    <TextView
+                        android:id="@+id/reply_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/reply_icon_2"
+                        android:layout_marginBottom="10dp"
+                        android:text="父母回家的时候。定了他家的厨师过来炒菜，非常速度，而且炒的特别好吃，下次聚会，还叫他家。。。"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/reply_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/reply_icon_1"
+                            android:layout_marginRight="10dp"/>
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/reply_icon_2"
+                            android:layout_marginRight="10dp"/>
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/reply_icon_3"
+                            android:layout_marginRight="10dp"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#d3d3d3" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/add_car"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#f39800"
+            android:clickable="true"
+            android:onClick="toCar"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="25dip"
+                android:layout_height="20dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/tab_car" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dp"
+                android:text="加入购物车"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#bf4722"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="25dip"
+                android:layout_height="20dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/taocan_ljyd" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dp"
+                android:text="立即预定"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="45dip"
+            android:layout_height="match_parent"
+            android:background="#f39800"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="25dip"
+                android:layout_height="25dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/kefu" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

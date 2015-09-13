@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+     >
+    <TextView 
+        android:id="@+id/arrow"
+        android:layout_width="15dp"
+        android:layout_height="8dp"
+        android:background="@drawable/black_arraw"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"/>
+    <LinearLayout
+        android:layout_below="@id/arrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/order_tip_bg"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <com.like.wheel.widget.views.WheelView
+            android:id="@+id/wheel1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.like.wheel.widget.views.WheelView
+            android:id="@+id/wheel2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.like.wheel.widget.views.WheelView
+            android:id="@+id/wheel3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>

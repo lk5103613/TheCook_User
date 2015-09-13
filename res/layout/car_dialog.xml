@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/car_dialog_bg" >
+    
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginBottom="29dp"
+            android:text="所选菜品总价低于最低服务金额"/>
+        
+        <RelativeLayout 
+            android:id="@+id/add_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/corner_yellow_bg">
+            
+            <LinearLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="10dp"
+                android:orientation="horizontal">
+                
+                <ImageView android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="23dp"
+                    android:src="@drawable/add_icon"/>
+                
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:text="我要加菜"/>
+                
+            </LinearLayout>
+            
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+    
+</RelativeLayout>

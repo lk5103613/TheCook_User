@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="102dp"
+    android:paddingLeft="14dp"
+    android:paddingRight="14dp"
+    android:background="@color/white">
+
+    <com.like.customeview.RoundImageView
+        android:id="@+id/dc_icon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginRight="13dp"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/dc_icon">
+        <TextView
+            android:id="@+id/dc_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginBottom="2dp"
+            android:textSize="18dp"
+            android:text="安东尼"/>
+        <TextView
+            android:id="@+id/server_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dc_name"
+            android:layout_marginBottom="2dp"
+            android:textSize="16dp"
+            android:textColor="@color/dc_detail_text_color"
+            android:text="已经服务234家"/>
+
+        <LinearLayout
+            android:id="@+id/goods_at_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/server_count"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="11dp"
+                android:textColor="@color/dc_detail_text_color"
+                android:textSize="16dp"
+                android:text="擅长菜"/>
+
+            <TextView
+                android:id="@+id/good_at_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/white"
+                android:background="@drawable/good_at_item_1"
+                android:text="粤菜"/>
+            <TextView
+                android:id="@+id/good_at_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="@color/white"
+                android:background="@drawable/good_at_item_2"
+                android:text="川菜"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/like_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:textSize="20dp"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:textColor="#af4c39"
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/like"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dc_item_divider"/>
+
+
+</RelativeLayout>

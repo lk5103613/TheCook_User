@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="#C30D22" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="下单信息"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/back"
+                android:layout_width="40dip"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="8dip"
+                    android:layout_height="15dip"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/back" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dip" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="联系信息："
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小明"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dip"
+                        android:paddingRight="10dp"
+                        android:text="13890984755"
+                        android:textColor="#bf4722"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dip"
+                    android:text="收货地址：浙江宁波海曙海宁路456号"
+                    android:textColor="@android:color/black"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="15dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用餐信息："
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="订单总额：￥456.00	"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/car_order_edit_bg"
+                    android:clickable="true"
+                    android:onClick="selectTime"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/lbl_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dip"
+                        android:paddingRight="10dp"
+                        android:text="用餐时间"
+                        android:textColor="#646464"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:layout_width="0.5dip"
+                        android:layout_height="match_parent"
+                        android:background="#d9d9d9" />
+
+                    <LinearLayout
+                        android:layout_width="35dip"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="15dip"
+                            android:layout_height="10dip"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/drop_down_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/car_order_edit_bg"
+                    android:clickable="true"
+                    android:onClick="selectNum"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/lbl_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dip"
+                        android:paddingRight="10dp"
+                        android:text="服务人数"
+                        android:textColor="#646464"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:layout_width="0.5dip"
+                        android:layout_height="match_parent"
+                        android:background="#d9d9d9" />
+
+                    <LinearLayout
+                        android:id="@+id/dropdown_number"
+                        android:layout_width="35dip"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="15dip"
+                            android:layout_height="10dip"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/drop_down_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/car_order_edit_bg"
+                    android:clickable="true"
+                    android:onClick="selectArea"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/area"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="厨房面积"
+                        android:textColor="#646464"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:layout_width="0.5dip"
+                        android:layout_height="match_parent"
+                        android:background="#d9d9d9" />
+
+                    <LinearLayout
+                        android:id="@+id/dropdown_area"
+                        android:layout_width="35dip"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="15dip"
+                            android:layout_height="10dip"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/drop_down_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:layout_marginTop="10dip"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="需要带餐厨具"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp" />
+
+                    <RadioGroup android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                        <RadioButton android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/rdo_cj_yes"
+                            android:textColor="@android:color/black"
+                            android:checked="true"
+                            android:textSize="13sp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            style="@style/CustomRdoTheme"
+	                        android:text="是"/>
+                        <RadioButton android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/rdo_cj_no"
+                            android:textColor="@android:color/black"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            style="@style/CustomRdoTheme"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:textSize="13sp"
+	                        android:text="否"/>
+                    </RadioGroup>
+                    
+                   
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dip"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginTop="5dip"
+                    android:background="#bbbbbb" />
+
+                <EditText
+                    android:id="@+id/special_memoEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/edit_bg"
+                    android:hint="特殊要求"
+                    android:minLines="3"
+                    android:padding="5dip"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dip"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/car_order_edit_bg"
+                    android:clickable="true"
+                    android:onClick="selectPay"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/lbl_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="支付方式"
+                        android:textColor="#646464"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:layout_width="0.5dip"
+                        android:layout_height="match_parent"
+                        android:background="#d9d9d9" />
+
+                    <LinearLayout
+                        android:id="@+id/select_pay_method"
+                        android:layout_width="35dip"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="15dip"
+                            android:layout_height="10dip"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/drop_down_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- order item -->
+                <ListView
+                    android:id="@+id/order_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="#00ffffff"
+                    android:scrollbars="none" />
+
+                <TextView
+                    android:id="@+id/sb"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@drawable/btn_red_bg"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="提交订单"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+                
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/car_order_fk_bg"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="160dip"
+                    android:layout_height="40dip"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/car_order_fk_title" />
+
+                <LinearLayout
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/order_yuan_un"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="5dip"
+                        android:layout_height="10dip"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/car_order_fk_wenhao" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:background="#bbbbbb" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="5dip"
+                android:text="￥46.00"
+                android:textColor="@android:color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="15dip"
+                android:text="招商银行信用卡（尾号8686）付款"
+                android:textColor="@android:color/black"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:background="#bbbbbb" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:scaleType="fitXY"
+                android:src="@drawable/car_order_fk_kuang" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:layout_margin="10dip"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_bg"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="@android:color/black"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/car_order_fk_btn"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:onClick="pay"
+                    android:text="立即付款"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

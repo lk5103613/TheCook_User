@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginTop="20dp">
+
+    <com.like.customeview.RoundImageView
+        android:id="@+id/header_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/reply1"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@id/header_avatar"
+        android:text="anjuli"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_toRightOf="@id/header_avatar"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star_select"
+            android:layout_marginRight="5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star_select"
+            android:layout_marginRight="5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star_select"
+            android:layout_marginRight="5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star_select"
+            android:layout_marginRight="5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/star"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="2015-8-18"
+        android:textColor="#bbbbbb"/>
+
+    <TextView
+        android:id="@+id/reply_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/header_avatar"
+        android:layout_marginBottom="10dp"
+        android:text="父母回家的时候。定了他家的厨师过来炒菜，非常速度，而且炒的特别好吃，下次聚会，还叫他家。。。"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reply_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/reply_icon_1"
+            android:layout_marginRight="10dp"/>
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/reply_icon_2"
+            android:layout_marginRight="10dp"/>
+        <ImageView
+           android:id="@+id/img3"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/reply_icon_3"
+            android:layout_marginRight="10dp"/>
+        
+    </LinearLayout>
+
+</RelativeLayout>

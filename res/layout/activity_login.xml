@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:focusable="true"  
+        android:focusableInTouchMode="true"
+	    android:orientation="vertical" >
+	    
+	    <RelativeLayout
+	        android:id="@+id/toolbar"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/toolbar_height"
+	        android:background="#C30D22"
+	        android:layout_marginBottom="10dp">
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:text="登陆"
+	            android:textColor="@android:color/white"
+	            android:textSize="18sp" />
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentRight="true"
+	            android:layout_centerVertical="true"
+	            android:layout_marginRight="10dp"
+	            android:text="注册"
+	            android:clickable="true"
+	            android:onClick="toReg"
+	            android:textColor="@android:color/white"
+	            android:textSize="15sp" />
+	
+	    </RelativeLayout>
+	    
+	    <EditText android:id="@+id/lbl_account"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:inputType="number"
+	        android:maxLength="11"
+	        android:background="@null"
+	        android:padding="10dp"
+	        android:hint="请输入您的登陆账号"
+	        android:layout_marginTop="30dp"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp"/>
+	    
+	    <View android:layout_width="match_parent"
+	        android:layout_height="0.5dp"
+	        android:background="@color/black"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp" />
+	    
+	    <EditText android:id="@+id/lbl_pwd"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:inputType="textPassword"
+	        android:layout_marginTop="20dp"
+	        android:hint="请输入6-16位登陆密码"
+	        android:maxLength="16"
+	        android:background="@null"
+	        android:padding="10dp"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp"/>
+	    <View android:layout_width="match_parent"
+	        android:layout_height="0.5dp"
+	        android:background="@color/black"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp" />
+	    
+	    <Button android:id="@+id/btn_login"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp"
+	        android:layout_marginTop="20dp"
+	        android:background="@drawable/btn_blue_bg"
+	        android:onClick="login"
+	        android:text="登陆"
+	        android:textColor="@color/white" />
+	    
+	    <TextView android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginTop="20dp"
+	        android:textColor="#9d9d9d"
+	        android:text="忘记密码?"/>
+	    
+	    <RelativeLayout android:layout_width="match_parent"
+	        android:layout_height="match_parent">
+	        
+	        <TextView 
+	            android:id="@+id/txt_other_login"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+		        android:textColor="#9d9d9d"
+		        android:layout_centerHorizontal="true"
+		        android:layout_marginTop="50dp"
+	            android:text="使用其他账号登陆" />
+	        
+	        <LinearLayout android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:layout_marginTop="30dp"
+	            android:layout_below="@id/txt_other_login"
+	            android:layout_centerHorizontal="true">
+	            
+	            <ImageView android:layout_width="45dp"
+	                android:layout_height="45dp"
+	                android:layout_gravity="center"
+	                android:layout_marginRight="30dp"
+	                android:src="@drawable/wb"/>
+	            <ImageView android:layout_width="45dp"
+	                android:layout_height="45dp"
+	                android:layout_gravity="center"
+	                android:src="@drawable/wx"/>
+	            <ImageView android:layout_width="45dp"
+	                android:layout_height="45dp"
+	                android:layout_gravity="center"
+	                android:layout_marginLeft="30dp"
+	                android:src="@drawable/qq_login"/>
+	            
+	        </LinearLayout>
+	        
+	    </RelativeLayout>
+	
+	</LinearLayout>
+</ScrollView>

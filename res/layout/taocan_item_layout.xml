@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/corner_bg"
+    android:orientation="vertical"
+    android:paddingBottom="10dp" 
+    android:id="@+id/tc_item">
+
+    <com.like.customeview.CornerImage
+        android:id="@+id/taocan_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/dc_banner" />
+
+    <TextView
+        android:id="@+id/taocan_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taocan_img"
+        android:text="轻盈套餐"
+        android:textColor="@color/black"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/taocan_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taocan_img"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/taocan_name"
+        android:text="(四菜一汤)"
+        android:textColor="@color/black"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/taocan_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/taocan_name"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="品味清凉美味，体验从身心的舒爽感觉，享受不一样的夏天..."
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/taocan_des"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/car_order_fk_btn"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="立即预定"
+        android:textColor="@android:color/white"
+        android:textSize="13sp" />
+
+</RelativeLayout>
