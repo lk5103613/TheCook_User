@@ -1,5 +1,6 @@
 package com.like.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,10 +8,13 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.dcjd.cook.R;
@@ -23,6 +27,7 @@ import com.like.thecook.MeiShiActivity;
 import com.like.thecook.QRActivity;
 import com.like.thecook.TaoCanInfoActivity;
 import com.like.thecook.ZxActivity;
+import com.like.util.DeviceUtil;
 
 public class HomeFragment extends Fragment {
 	
@@ -32,6 +37,7 @@ public class HomeFragment extends Fragment {
 	private ViewGroup mScan;
 	private Handler mHandler;
 	private boolean mNeedScroll = true;
+	private Dialog mDialog;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -86,7 +92,8 @@ public class HomeFragment extends Fragment {
 		layout.findViewById(R.id.call).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				callLayout.setVisibility(callLayout.getVisibility()==View.GONE?View.VISIBLE:View.GONE);
+				//callLayout.setVisibility(callLayout.getVisibility()==View.GONE?View.VISIBLE:View.GONE);
+				showDialog();
 			}
 		});
 //		layout.findViewById(R.id.callNull).setOnClickListener(new OnClickListener() {
@@ -135,6 +142,32 @@ public class HomeFragment extends Fragment {
 			}
 		});
 		return layout;
+	}
+	
+	private void showDialog() {
+		if(mDialog == null) {
+			mDialog = new Dialog(getActivity(), R.style.Theme_dialog);
+			View v = LayoutInflater.from(getActivity()).inflate(R.layout.phone_call_dialog, null, false);
+			v.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if(mDialog.isShowing())
+						mDialog.dismiss();
+					Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+ BaseActivity.PHONE_NUMBER));
+			        startActivity(intent);
+				}
+			});
+			mDialog.setContentView(v);
+			int screenWidth = DeviceUtil.getScreenWidht(getActivity());
+			Window dialogWindow = mDialog.getWindow();
+	        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+	        dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+	        lp.width = screenWidth;
+	        lp.y = DeviceUtil.dip2px(getActivity(), 44);
+	        dialogWindow.setAttributes(lp);
+		}
+        mDialog.show();
+        
 	}
 	
 	@Override

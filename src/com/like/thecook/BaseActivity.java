@@ -21,7 +21,7 @@ import com.like.storage.ShoppingCartManager;
 
 public class BaseActivity extends Activity {
 	
-	public final static String PHONE_NUMBER = "4008552727";
+	public final static String PHONE_NUMBER = "40067654634";
 	
 	public final static String USER_PROPERTIES = "login_properties";
 	public final static String IS_LOGIN = "is_login";
