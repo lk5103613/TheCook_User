@@ -104,7 +104,8 @@
         <com.like.customeview.pulldown.PullToRefreshListView
             android:id="@+id/ms_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:divider="#c7c4be" />
         
     </LinearLayout>
 
