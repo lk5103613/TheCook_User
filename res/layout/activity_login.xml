@@ -27,10 +27,11 @@
 	            android:textSize="18sp" />
 	        <TextView
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
+	            android:layout_height="match_parent"
 	            android:layout_alignParentRight="true"
 	            android:layout_centerVertical="true"
-	            android:layout_marginRight="10dp"
+	            android:gravity="center_vertical"
+	            android:paddingRight="15dp"
 	            android:text="注册"
 	            android:clickable="true"
 	            android:onClick="toReg"
@@ -87,9 +88,10 @@
 	    
 	    <TextView android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="30dp"
-	        android:layout_marginTop="20dp"
+	        android:layout_marginLeft="25dp"
+	        android:layout_marginTop="15dp"
 	        android:textColor="#9d9d9d"
+	        android:padding="5dp"
 	        android:text="忘记密码?"/>
 	    
 	    <RelativeLayout android:layout_width="match_parent"

@@ -60,9 +60,10 @@
                     android:textSize="13sp" />
 
                 <ImageView
-                    android:layout_width="25dip"
-                    android:layout_height="25dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:scaleType="fitXY"
+                    android:padding="5dp"
                     android:src="@drawable/taocan_zan" />
             </LinearLayout>
 

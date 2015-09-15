@@ -46,7 +46,6 @@
                 android:textColor="#636363"
                 android:text="市场价：  "/>
 
-
         </LinearLayout>
         
     </LinearLayout>

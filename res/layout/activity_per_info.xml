@@ -36,11 +36,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:clickable="true"
-            android:gravity="center"
+            android:gravity="left|center_vertical"
             android:orientation="vertical" >
 
             <ImageView
