@@ -9,26 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
         android:background="#C30D22" >
-        
-        <LinearLayout
-            android:id="@+id/back"
-            android:layout_width="40dip"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:onClick="back"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="8dip"
-                android:layout_height="15dip"
-                android:scaleType="fitXY"
-                android:src="@drawable/back" />
-        </LinearLayout>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:layout_centerInParent="true"
             android:text="订单"
             android:textColor="@android:color/white"
             android:textSize="18sp" />

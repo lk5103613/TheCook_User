@@ -7,6 +7,8 @@ import java.util.Map;
 
 import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -95,10 +97,11 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
 		TextView name = holder.findView(R.id.tc_name);
 		TextView money = holder.findView(R.id.money);
 		final TextView count = holder.findView(R.id.count);
-        ImageView delete = holder.findView(R.id.delete);
-        ImageView jia = holder.findView(R.id.jia);
-        ImageView jian = holder.findView(R.id.jian);
+        ViewGroup delete = holder.findView(R.id.delete);
+        ViewGroup jia = holder.findView(R.id.jia);
+        ViewGroup jian = holder.findView(R.id.jian);
         ImageView showImg = holder.findView(R.id.tc_img);
+        ViewGroup checkContainer = holder.findView(R.id.check_container);
         
         final int entityId = entity.id;
         if(mCheckboxes.get(entity.id) == null) {
@@ -107,6 +110,13 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
         } else {
         	check.setChecked(mCheckboxes.get(entityId));
         }
+        
+        checkContainer.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				check.performClick();
+			}
+		});
         
         check.setTag(entity.id);
         check.setOnClickListener(new View.OnClickListener() {

@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="#C30D22">
+        android:background="@color/primary_red_color">
 
         <TextView
             android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:id="@+id/back"
-            android:layout_width="40dip"
+            android:layout_width="@dimen/back_width"
             android:layout_height="fill_parent"
             android:gravity="center"
             android:clickable="true"
@@ -57,7 +57,8 @@
         android:layout_height="52dp"
         android:orientation="horizontal"
         android:layout_below="@id/toolbar"
-        android:background="@color/dc_top_menu_bg"
+        android:background="@color/white"
+        android:baselineAligned="false"
         android:weightSum="3">
         <LinearLayout
             android:layout_width="0dp"
@@ -113,21 +114,27 @@
                 android:drawablePadding="5dp"
                 android:text="所在地区"/>
         </LinearLayout>
-
     </LinearLayout>
+    
+    <View 
+        android:id="@+id/dc_top_divider"
+        android:layout_width="match_parent"
+        android:layout_below="@id/dc_top"
+        android:layout_height="1dp"
+        android:background="#c7c4be" />
 
     <com.like.customeview.pulldown.PullToRefreshListView
         android:id="@+id/dc_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/dc_top"
+        android:layout_below="@id/dc_top_divider"
         android:divider="#00000000" />
 
     <LinearLayout
         android:id="@+id/good_at_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/dc_top"
+        android:layout_below="@id/dc_top_divider"
         android:background="#c0000000"
         android:visibility="gone"
         android:onClick="hideAll"
@@ -137,13 +144,10 @@
             android:id="@+id/good_at_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="35dp"
-            android:paddingRight="35dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
             android:background="@color/white"
             android:orientation="vertical">
 
+		    
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,19 +159,25 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:onClick="choiceGoodAt"
+                    android:background="@drawable/dc_right_border"
                     android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="9dp"
-                        android:src="@drawable/chuancai"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#6a6a6a"
+                        android:layout_marginBottom="19dp"
+                        android:text="川"
+                        android:textSize="24dp"
+                        android:textColor="#ff2400"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12dp"
+                        android:textColor="#686868"
                         android:text="川菜"/>
 
                 </LinearLayout>
@@ -175,21 +185,27 @@
                     android:id="@+id/xiang"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:onClick="choiceGoodAt"
+                    android:background="@drawable/dc_right_border"
                     android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="9dp"
-                        android:src="@drawable/xiangcai"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#6a6a6a"
+                        android:layout_marginBottom="19dp"
+                        android:textSize="24dp"
+                        android:textColor="#bf4722"
+                        android:text="湘"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12dp"
+                        android:textColor="#686868"
                         android:text="湘菜"/>
 
                 </LinearLayout>
@@ -197,50 +213,65 @@
                     android:id="@+id/lu"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:onClick="choiceGoodAt"
                     android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="9dp"
-                        android:src="@drawable/lucai"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#6a6a6a"
+                        android:layout_marginBottom="19dp"
+                        android:textSize="24dp"
+                        android:textColor="#e28500"
+                        android:text="鲁"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12dp"
+                        android:textColor="#686868"
                         android:text="鲁菜"/>
 
                 </LinearLayout>
             </LinearLayout>
+    
+		    <View android:layout_width="match_parent"
+		        android:layout_height="0.5dp"
+		        android:background="#c7c4be" />
+		    
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="14dp"
                 android:weightSum="3">
                 <LinearLayout
                     android:id="@+id/yue"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/dc_right_border"
                     android:clickable="true"
                     android:onClick="choiceGoodAt"
                     android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="9dp"
-                        android:src="@drawable/yuecai"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#6a6a6a"
+                        android:layout_marginBottom="19dp"
+                        android:textSize="24dp"
+                        android:textColor="#f6c500"
+                        android:text="粤"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12dp"
+                        android:textColor="#686868"
                         android:text="粤菜"/>
 
                 </LinearLayout>
@@ -248,21 +279,27 @@
                     android:id="@+id/ben"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:background="@drawable/dc_right_border"
                     android:onClick="choiceGoodAt"
                     android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="9dp"
-                        android:src="@drawable/benbangcai"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#6a6a6a"
+                        android:layout_marginBottom="19dp"
+                        android:textSize="24dp"
+                        android:textColor="#00baff"
+                        android:text="本"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12dp"
+                        android:textColor="#686868"
                         android:text="本帮菜"/>
 
                 </LinearLayout>
@@ -270,21 +307,26 @@
                     android:id="@+id/bei"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:onClick="choiceGoodAt"
                     android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="9dp"
-                        android:src="@drawable/dbcai"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textColor="#6a6a6a"
+                        android:layout_marginBottom="19dp"
+                        android:textSize="24dp"
+                        android:textColor="#a900eb"
+                        android:text="北"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12dp"
+                        android:textColor="#686868"
                         android:text="东北菜"/>
 
                 </LinearLayout>
@@ -301,7 +343,7 @@
         android:background="#c0000000"
         android:visibility="gone"
         android:onClick="hideAll"
-        android:layout_below="@id/dc_top">
+        android:layout_below="@id/dc_top_divider">
 
         <LinearLayout
             android:id="@+id/server_count_content"
@@ -314,13 +356,13 @@
                 android:id="@+id/cnt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceCnt"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="1"/>
             <View
                 android:layout_width="match_parent"
@@ -330,13 +372,13 @@
                 android:id="@+id/cnt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceCnt"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="2"/>
             <View
                 android:layout_width="match_parent"
@@ -346,13 +388,13 @@
                 android:id="@+id/cnt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceCnt"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="3"/>
             <View
                 android:layout_width="match_parent"
@@ -362,13 +404,13 @@
                 android:id="@+id/cnt4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceCnt"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="4"/>
             <View
                 android:layout_width="match_parent"
@@ -383,9 +425,9 @@
         android:id="@+id/location_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/dc_top"
-        android:background="#c0000000"
+        android:layout_below="@id/dc_top_divider"
         android:visibility="gone"
+        android:background="#c0000000"
         android:onClick="hideAll"
         android:orientation="vertical">
 
@@ -399,13 +441,13 @@
                 android:id="@+id/location1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceLocation"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="海曙区"/>
             <View
                 android:layout_width="match_parent"
@@ -415,13 +457,13 @@
                 android:id="@+id/location2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceLocation"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="肃州区"/>
             <View
                 android:layout_width="match_parent"
@@ -431,13 +473,13 @@
                 android:id="@+id/location3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceLocation"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="奉化区"/>
             <View
                 android:layout_width="match_parent"
@@ -447,13 +489,13 @@
                 android:id="@+id/location4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:textColor="#5f5e5b"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="23dp"
                 android:clickable="true"
                 android:onClick="choiceLocation"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:text="镇海区"/>
             <View
                 android:layout_width="match_parent"

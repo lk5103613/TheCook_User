@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -86,6 +88,7 @@ public class DcActivity extends BaseActivity {
                     updateDC();
                 } else if (mDCList.isShownFooter()) {
                     // 加载更多
+                    
                     mCurrentPage++;
                     updateDC();
                 }

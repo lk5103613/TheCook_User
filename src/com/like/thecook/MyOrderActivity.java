@@ -2,7 +2,6 @@ package com.like.thecook;
 
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ import com.like.entity.Order;
 import com.like.network.DataFetcher;
 import com.like.network.GsonUtil;
 
-public class MyOrderActivity extends Activity {
+public class MyOrderActivity extends BaseActivity {
 	private DataFetcher mDataFetcher;
 	private Context mContext;
 
@@ -60,14 +59,8 @@ public class MyOrderActivity extends Activity {
 		mDataFetcher.fetchOrderDetail(orderId, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				System.out.println(response);
 				Order order = GsonUtil.gson.fromJson(response.toString(), Order.class);
 			}
-		}, new ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				System.out.println(error.getMessage());
-			}
-		});
+		}, mErrorListener);
 	}
 }

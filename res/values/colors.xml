@@ -11,8 +11,8 @@
     <color name="light_gray">#bbbbbb</color>
     <color name="province_line_border">#C7C7C7</color>
     <color name="dc_top_menu_bg">#e3e3e3</color>
-    <color name="dc_top_menu_text_color">#646464</color>
-    <color name="dc_top_menu_text_selected_color">#bf4722</color>
+    <color name="dc_top_menu_text_color">#686868</color>
+    <color name="dc_top_menu_text_selected_color">#5c6f98</color>
     <color name="dc_item_divider">#c0c0c0</color>
     <color name="dc_detail_text_color">#b8b8b8</color>
     <color name="choise_color_1">#cecece</color>
@@ -34,5 +34,8 @@
     <color name="viewfinder_frame">#ff000000</color>
     <color name="viewfinder_laser">#ffff0000</color>
     <color name="possible_result_points">#c0ffff00</color>
+    
+    <color name="primary_red_color">#991017</color>
+    <color name="primary_grey_bg">#eeeeee</color>
 
 </resources>

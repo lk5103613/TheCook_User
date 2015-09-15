@@ -81,14 +81,14 @@ public class MSAdapter extends BaseAdapter {
 		public TextView sPackName;
 		public TextView sPrice;
 		public TextView sSoldCnt;
-		public TextView sAddToCart;
+		public ViewGroup sAddToCart;
 		
 		public ViewHolder(View convertView) {
 			sImg = (ImageView) convertView.findViewById(R.id.img);
 			sPackName = (TextView) convertView.findViewById(R.id.pack_name);
 			sPrice = (TextView) convertView.findViewById(R.id.price);
 			sSoldCnt = (TextView) convertView.findViewById(R.id.sold_cnt);
-			sAddToCart = (TextView) convertView.findViewById(R.id.add_to_cart);
+			sAddToCart = (ViewGroup) convertView.findViewById(R.id.add_to_cart);
 			sAddToCart.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {

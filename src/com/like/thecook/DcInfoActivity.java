@@ -51,7 +51,7 @@ public class DcInfoActivity extends BaseActivity {
 
 	private void initUIViews() {
 		mImageLoader = MyNetworkUtil.getInstance(mApplicationContext).getImageLoader();
-		mDCIcon = (RoundImageView) findViewById(R.id.dc_ico);
+		mDCIcon = (RoundImageView) findViewById(R.id.dc_icon);
 		mDCName = (TextView) findViewById(R.id.txt_dc_name);
 		mGoodAt1 = (TextView) findViewById(R.id.good_at_1);
 		mGoodAt2 = (TextView) findViewById(R.id.good_at_2);

@@ -3,22 +3,21 @@
     android:id="@+id/item1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:background="@color/white"
+    android:orientation="horizontal"
     android:padding="10dip" >
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="60dip"
-        android:layout_height="60dip"
+        android:layout_width="90dip"
+        android:layout_height="90dip"
+        android:layout_gravity="center_vertical"
         android:scaleType="fitXY"
         android:src="@drawable/meishi_img_01" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:paddingLeft="10dip" >
 
         <TextView
@@ -26,62 +25,60 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="美味仙贝套餐"
-            android:textColor="@android:color/black"
-            android:textSize="15sp" />
+            android:textColor="#5c6f98"
+            android:textSize="16sp" />
 
         <LinearLayout
+            android:id="@+id/sold_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dip"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="10dip"
-                android:layout_height="10dip"
-                android:scaleType="fitXY"
-                android:src="@drawable/taocan_xx_sel" />
-
-            <ImageView
-                android:layout_width="10dip"
-                android:layout_height="10dip"
-                android:layout_marginLeft="2dip"
-                android:scaleType="fitXY"
-                android:src="@drawable/taocan_xx_sel" />
-
-            <ImageView
-                android:layout_width="10dip"
-                android:layout_height="10dip"
-                android:layout_marginLeft="2dip"
-                android:scaleType="fitXY"
-                android:src="@drawable/taocan_xx_sel" />
-
-            <ImageView
-                android:layout_width="10dip"
-                android:layout_height="10dip"
-                android:layout_marginLeft="2dip"
-                android:scaleType="fitXY"
-                android:src="@drawable/taocan_xx" />
-
-            <ImageView
-                android:layout_width="10dip"
-                android:layout_height="10dip"
-                android:layout_marginLeft="2dip"
-                android:scaleType="fitXY"
-                android:src="@drawable/taocan_xx" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dip"
-            android:gravity="bottom"
+            android:layout_below="@id/pack_name"
+            android:layout_marginTop="11dp"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="已售"
+                android:textColor="#757575"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/sold_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="880"
+                android:textColor="#f75929"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="份"
+                android:textColor="#757575"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/price_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dip"
+            android:layout_below="@id/sold_container"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="仅售"
+                android:textColor="#757575"
+                android:textSize="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="￥"
-                android:textColor="#a1a1a1"
+                android:textColor="#757575"
                 android:textSize="12sp" />
 
             <TextView
@@ -89,48 +86,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30"
-                android:textColor="#f39800"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dip"
-                android:text="已售"
-                android:textColor="#a1a1a1"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/sold_cnt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="880"
-                android:textColor="#f39800"
-                android:textSize="13sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="份"
-                android:textColor="#a1a1a1"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/add_to_cart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/meishi_car"
-                android:paddingBottom="3dip"
-                android:paddingLeft="5dip"
-                android:paddingRight="5dip"
-                android:paddingTop="3dip"
-                android:text="加入购物车"
-                android:textColor="@android:color/white"
-                android:textSize="12sp" />
+                android:textColor="#f75929"
+                android:textSize="20sp" />
         </LinearLayout>
-    </LinearLayout>
-    <View android:layout_width="match_parent" 
-        android:layout_height="0.5dip" 
-        android:background="#eae8e8"/>
+
+        <LinearLayout
+            android:id="@+id/add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/price_container"
+            android:background="@drawable/pre_book_normal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥4688"
+                android:textColor="@color/primary_red_color"
+                android:layout_marginRight="7dp"
+                android:textSize="10dp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@color/primary_red_color" />
+            
+            <ImageView android:layout_width="18dp"
+                android:layout_height="15dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/pre_book_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即预定"
+                android:textColor="@color/primary_red_color"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="#eae8e8" />
+
 </LinearLayout>
