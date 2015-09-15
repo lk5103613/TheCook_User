@@ -150,6 +150,7 @@ public class CarOrderActivity extends BaseActivity {
 											"转向支付宝...", Toast.LENGTH_LONG);
 									toast.setGravity(Gravity.CENTER, 0, 0);
 									toast.show();
+//									Intent intent = new Intent(mContext, )
 								} else {
 									Toast toast = Toast.makeText(
 											getApplicationContext(), "提交失败",

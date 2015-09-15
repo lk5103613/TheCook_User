@@ -347,6 +347,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/btn_corner_bg"
+                    android:onClick="callNum"
                     android:layout_marginRight="10dp"
                     android:text="联系客服"/>
                 <Button 

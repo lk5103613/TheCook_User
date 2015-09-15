@@ -55,6 +55,10 @@ public class MyOrderActivity extends BaseActivity {
 		});
 	}
 	
+	public void callNum(View v) {
+		callNumber();
+	}
+	
 	private void initData(){
 		mDataFetcher.fetchOrderDetail(orderId, new Listener<JSONObject>() {
 			@Override

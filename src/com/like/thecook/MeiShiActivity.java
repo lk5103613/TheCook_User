@@ -42,6 +42,11 @@ public class MeiShiActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view, int position,
 					long id) {
+				position -= 1;
+				Intent intent = new Intent(mContext, TaoCanDetailActivity.class);
+				Meishi ms = (Meishi) mAdapter.getItem(position);
+				intent.putExtra("msId", ms.meishiId);
+				startActivity(intent);
 			}
 		});
 		mMsList.setOnRefreshListener(new OnRefreshListener2<ListView>() {
@@ -69,6 +74,7 @@ public class MeiShiActivity extends BaseActivity {
 		mDataFetcher.fetchMSList(mCurrentPage+"", new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				System.out.println(response);
 				Type type = new TypeToken<ListResult<Meishi>>(){}.getType();
 				ListResult<Meishi> meishis = GsonUtil.gson.fromJson(response.toString(), type);
 				List<Meishi> mss = meishis.list;

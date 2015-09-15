@@ -45,5 +45,7 @@ public class APIS {
     public static final String UPDATE_PHONE = BASE_URL + "/index.php/AppUser/updateMpFn?uid=%1&newMp=%2";
     
     public static final String SEND_CODE = "http://222.73.117.158/msg/HttpBatchSendSM?account=vip_lb_dcjd&pswd=vip_lb_dcjd001&mobile=%1&msg=%2&needstatus=true";
+    
+    public static final String GET_MS_DETAIL = BASE_URL + "/index.php/meishi/loadMeishi?meishiid=%1";
 
 }

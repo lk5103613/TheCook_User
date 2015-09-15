@@ -268,5 +268,12 @@ public class DataFetcher {
                 errorListener);
         MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
     }
+    
+    public void fetchMSDetail(String meishiId, Listener<JSONObject> listener, ErrorListener errorListener) {
+    	String url = UrlParamGenerator.getPath(APIS.GET_MS_DETAIL, meishiId);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, listener,
+                errorListener);
+        MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
+    }
 
 }

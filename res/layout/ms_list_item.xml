@@ -18,7 +18,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dip" >
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp" >
 
         <TextView
             android:id="@+id/pack_name"
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/pack_name"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="6dp"
             android:orientation="horizontal" >
 
             <TextView
@@ -63,7 +64,7 @@
             android:id="@+id/price_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dip"
+            android:layout_marginTop="2dip"
             android:layout_below="@id/sold_container"
             android:orientation="horizontal" >
 

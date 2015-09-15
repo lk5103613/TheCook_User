@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.dcjd.cook.R;
 import com.like.adapter.CommentAdapter;
+import com.like.entity.Meishi;
 import com.like.entity.ShoppingCartEntity;
 import com.like.entity.TCDetail;
 import com.like.network.APIS;
@@ -53,6 +55,7 @@ public class TaoCanDetailActivity extends BaseActivity {
     private View mCurrentTab;
     private PopupWindow mDialog;
     private ViewGroup mAddCar;
+    private String mMsId;
 //    private TextView mTxtReplyCount;
     
     private int mPackId;
@@ -107,6 +110,7 @@ public class TaoCanDetailActivity extends BaseActivity {
         Intent intent = getIntent();
         if(intent != null) {
         	mPackId = intent.getIntExtra("pacId", -1);
+        	mMsId = intent.getStringExtra("msId");
         }
         if(mPackId != -1)
 	        mDataFetcher.fetchTCDetail(mPackId, new Listener<JSONObject>() {
@@ -115,13 +119,27 @@ public class TaoCanDetailActivity extends BaseActivity {
 					mDetail = GsonUtil.gson.fromJson(response.toString(), TCDetail.class);
 					setupView(mDetail);
 				}
-			}, new ErrorListener() {
+			}, mErrorListener);
+        if(!TextUtils.isEmpty(mMsId)) {
+        	mDataFetcher.fetchMSDetail(mMsId, new Listener<JSONObject>() {
 				@Override
-				public void onErrorResponse(VolleyError error) {
-					Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
+				public void onResponse(JSONObject response) {
+					Meishi ms = GsonUtil.gson.fromJson(response.toString(), Meishi.class);
+					setupView(ms);
 				}
-			});
+			}, mErrorListener);
+        }
         
+	}
+	
+	private void setupView(Meishi ms) {
+		MyNetworkUtil.getInstance(mContext).getImageLoader().get(APIS.BASE_URL + ms.avatar, 
+				ImageLoader.getImageListener(mTCImg, R.color.white, R.color.white));
+		mPackageName.setText(ms.name);
+		mPrice.setText(ms.price);
+		mSoldCount.setText(ms.sold_cnt);
+//		mAdapter = new CommentAdapter(mContext, detail.commentList);
+//		mList.setAdapter(mAdapter);
 	}
 	
 	private void setupView(TCDetail detail) {
