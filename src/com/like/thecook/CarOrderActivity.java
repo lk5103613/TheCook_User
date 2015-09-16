@@ -432,7 +432,6 @@ public class CarOrderActivity extends BaseActivity {
 	}
 
 	public void pay(View v) {
-		
 		//to alipay
 		Intent intent = new Intent(this, AliPayActivity.class);
 		startActivity(intent);

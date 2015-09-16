@@ -116,6 +116,7 @@ public class DataFetcher {
 			json =  URLEncoder.encode(json, mChartName);
 			diningTime = URLEncoder.encode(diningTime, mChartName).replace("%3A", ":");
 			specialComment = URLEncoder.encode(specialComment, mChartName);
+			kitCnt = URLEncoder.encode(kitCnt, "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
