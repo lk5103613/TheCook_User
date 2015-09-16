@@ -170,7 +170,9 @@ public class CarOrderActivity extends BaseActivity {
 											"转向支付宝...", Toast.LENGTH_LONG);
 									toast.setGravity(Gravity.CENTER, 0, 0);
 									toast.show();
-//									Intent intent = new Intent(mContext, )
+									
+									Intent intent = new Intent(mContext, AliPayActivity.class);
+									startActivity(intent);
 								} else {
 									Toast toast = Toast.makeText(
 											getApplicationContext(), "提交失败",
@@ -430,8 +432,9 @@ public class CarOrderActivity extends BaseActivity {
 	}
 
 	public void pay(View v) {
-		Intent intent = new Intent(this, IndexActivity.class);
-		intent.putExtra("tab_index", 3);
+		
+		//to alipay
+		Intent intent = new Intent(this, AliPayActivity.class);
 		startActivity(intent);
 	}
 
