@@ -40,7 +40,6 @@ public class LoginActivity extends BaseActivity {
 			startActivity(intent);
 			LoginActivity.this.finish();
 		}
-		
 		mLblAccount = (EditText) findViewById(R.id.lbl_account);
 		mLblPwd = (EditText) findViewById(R.id.lbl_pwd);
 		mDataFetcher = DataFetcher.getInstance(mContext);
@@ -67,9 +66,7 @@ public class LoginActivity extends BaseActivity {
 					Toast.makeText(mContext, "用户名或密码不正确", Toast.LENGTH_LONG).show();
 					return;
 				} else {
-					
 					Toast.makeText(mContext, "登陆成功", Toast.LENGTH_LONG).show();
-					
 					new Thread(new Runnable() {
 						@Override
 						public void run() {
@@ -98,6 +95,7 @@ public class LoginActivity extends BaseActivity {
 	public void toReg(View v) {
 		Intent intent = new Intent(mContext, RegActivity.class);
 		startActivity(intent);
+		this.finish();
 	}
 
 }

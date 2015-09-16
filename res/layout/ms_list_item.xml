@@ -101,9 +101,10 @@
             android:orientation="horizontal" >
 
             <TextView
+                android:id="@+id/btn_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="￥4688"
+                android:text="￥688"
                 android:textColor="@color/primary_red_color"
                 android:layout_marginRight="7dp"
                 android:textSize="10dp" />

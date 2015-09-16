@@ -68,6 +68,7 @@ public class MSAdapter extends BaseAdapter {
 		vh.sPrice.setText(ms.price);
 		vh.sSoldCnt.setText(ms.sold_cnt);
 		vh.sAddToCart.setTag(position);
+		vh.sBtnPrice.setText("￥"+ms.price);
 		return convertView;
 	}
 	
@@ -82,6 +83,7 @@ public class MSAdapter extends BaseAdapter {
 		public TextView sPrice;
 		public TextView sSoldCnt;
 		public ViewGroup sAddToCart;
+		public TextView sBtnPrice;
 		
 		public ViewHolder(View convertView) {
 			sImg = (ImageView) convertView.findViewById(R.id.img);
@@ -89,6 +91,7 @@ public class MSAdapter extends BaseAdapter {
 			sPrice = (TextView) convertView.findViewById(R.id.price);
 			sSoldCnt = (TextView) convertView.findViewById(R.id.sold_cnt);
 			sAddToCart = (ViewGroup) convertView.findViewById(R.id.add_to_cart);
+			sBtnPrice = (TextView) convertView.findViewById(R.id.btn_price);
 			sAddToCart.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -98,7 +101,9 @@ public class MSAdapter extends BaseAdapter {
 					cars.add(ms.toShoppingCartEntity());
 					Intent intent = new Intent(mContext, CarOrderActivity.class);
 					String json = GsonUtil.gson.toJson(cars);
+					String msJson = GsonUtil.gson.toJson(ms);
 					intent.putExtra("selected_values", json);
+					intent.putExtra("ms", msJson);
 					mContext.startActivity(intent);
 				}
 			});

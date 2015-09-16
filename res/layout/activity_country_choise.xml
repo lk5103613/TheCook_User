@@ -27,29 +27,6 @@
                 android:src="@drawable/back" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/call"
-            android:layout_width="25dip"
-            android:layout_height="25dip"
-            android:layout_centerInParent="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/kefu" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dip">
-
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:scaleType="fitXY"
-                android:src="@drawable/saoma" />
-        </LinearLayout>
     </RelativeLayout>
 
     <LinearLayout

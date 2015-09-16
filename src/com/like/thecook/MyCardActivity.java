@@ -63,6 +63,8 @@ public class MyCardActivity extends BaseActivity {
 				} else {
 					mAdapter.updateList(entities);
 				}
+				if(mList.isRefreshing())
+					mList.onRefreshComplete();
 			}
 		}, mErrorListener);
     }

@@ -82,11 +82,11 @@ public class CarFragment extends BaseFragment implements CheckListener {
 			public void onClick(View v) {
 				List<ShoppingCartEntity> cars = mAdapter.getSelectedEntities();
 				for(int i=0; i<cars.size(); i++) {
-					check(cars.get(i), false);
 					mShoppingCartManager.remove(cars.get(i));
 				}
 				cars = mShoppingCartManager.getAll();
 				mAdapter.updateList(cars);
+				check(cars);
 			}
 		});
 		layout.findViewById(R.id.add_more).setOnClickListener(new View.OnClickListener() {
@@ -155,15 +155,12 @@ public class CarFragment extends BaseFragment implements CheckListener {
 	}
 
 	@Override
-	public void check(ShoppingCartEntity entity, boolean isChecked) {
-		float prePrice = Float.valueOf(mPrice.getText().toString().replace("￥", ""));
+	public void check(List<ShoppingCartEntity> entities) {
 		float price = 0;
-		if(isChecked) {
-			mSettleCnt += entity.cnt;
-			price = entity.price * entity.cnt + prePrice;
-		} else {
-			mSettleCnt -= entity.cnt;
-			price = prePrice - (entity.price * entity.cnt);
+		mSettleCnt = 0;
+		for(int i=0; i<entities.size(); i++) {
+			price += entities.get(i).price * entities.get(i).cnt;
+			mSettleCnt += entities.get(i).cnt;
 		}
 		mPrice.setText("￥" + price);
 		mSettle.setText("结算("+mSettleCnt+")");

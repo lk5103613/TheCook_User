@@ -37,6 +37,7 @@ public class DcInfoActivity extends BaseActivity {
 	private PullToRefreshListView mCommentListView;
 	private DCCommentAdapter mAdapter;
 	private int mCId;
+	private TextView mLblCommentSize;
 
 
 	// UI
@@ -56,6 +57,7 @@ public class DcInfoActivity extends BaseActivity {
 		mGoodAt1 = (TextView) findViewById(R.id.good_at_1);
 		mGoodAt2 = (TextView) findViewById(R.id.good_at_2);
 		mTxtServiceCount = (TextView) findViewById(R.id.txt_service_count);
+		mLblCommentSize = (TextView) findViewById(R.id.comment_size);
 	}
 
 	@Override
@@ -106,6 +108,8 @@ public class DcInfoActivity extends BaseActivity {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
+				if(mCommentListView.isRefreshing())
+					mCommentListView.onRefreshComplete();
 			}
 		});
 	}
@@ -114,6 +118,7 @@ public class DcInfoActivity extends BaseActivity {
 		if(mAdapter == null) {
 			mAdapter = new DCCommentAdapter(mContext, mApplicationContext, dcEntity.commentList);
 			mCommentListView.setAdapter(mAdapter);
+			mLblCommentSize.setText("("+dcEntity.commentList.size() + ")");
 		} else {
 			mAdapter.setList(dcEntity.commentList);
 			mAdapter.notifyDataSetChanged();

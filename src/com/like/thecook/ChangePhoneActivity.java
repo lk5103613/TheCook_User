@@ -19,12 +19,14 @@ public class ChangePhoneActivity extends BaseActivity {
 	
 	private EditText mTxtPhone;
 	private String mPhoneNum;
+	private String mVerifyCode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change_phone);
 		mTxtPhone = (EditText) findViewById(R.id.edit_num);
+		mVerifyCode = ValidateCodeUtil.getValidateCode();
 	}
 
 	public void back(View v) {
@@ -61,7 +63,7 @@ public class ChangePhoneActivity extends BaseActivity {
 			Toast.makeText(mContext, "您输入的手机号不符合要求", Toast.LENGTH_SHORT).show();
 			return;
 		}
-		mDataFetcher.fetchSendCode(phone, "验证码为" + ValidateCodeUtil.getValidateCode(), new Listener<String>() {
+		mDataFetcher.fetchSendCode(phone, mVerifyCode, new Listener<String>() {
 			@Override
 			public void onResponse(String response) {
 			}

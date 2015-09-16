@@ -56,16 +56,16 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
 		for(int i=0; i<mCars.size(); i++) {
 			int id = mCars.get(i).id;
 			if(isSelectAll) {
-				if(mCheckboxes.get(id) == null || !mCheckboxes.get(id))
-					mListener.check(mCars.get(i), true);
 				mCheckboxes.put(id, true);
+//				if(mCheckboxes.get(id) == null || !mCheckboxes.get(id))
 			}
 			else {
-				if(mCheckboxes.get(id) == null || mCheckboxes.get(id))
-					mListener.check(mCars.get(i), false);
 				mCheckboxes.put(id, false);
+//				if(mCheckboxes.get(id) == null || mCheckboxes.get(id))
+//					mListener.check(getSelectedEntities());
 			}
 		}
+		mListener.check(getSelectedEntities());
 		notifyDataSetChanged();
 	}
 	
@@ -86,7 +86,9 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
 	}
 	
 	public interface CheckListener {
-		void check(ShoppingCartEntity entity, boolean isChecked);
+		void check(List<ShoppingCartEntity> selectedEntities);
+		
+//		void update();
 	}
 	
 	@Override
@@ -125,9 +127,9 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
 				int id = (Integer) v.getTag();
 				boolean value = mCheckboxes.get(id);
 				check.setChecked(!value);
-				if(mListener != null)
-					mListener.check(entity, !value);
 				mCheckboxes.put(id, !value);
+				if(mListener != null)
+					mListener.check(getSelectedEntities());
 			}
 		});
         delete.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +138,8 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
                 mManager.remove(entity);
                 mCars.remove(entity);
                 notifyDataSetChanged();
+                if(mListener != null)
+                	mListener.check(getSelectedEntities());
             }
         });
         jia.setOnClickListener(new View.OnClickListener() {
@@ -145,6 +149,8 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
                 count.setText((cnt + 1) + "");
                 entity.cnt = cnt + 1;
                 mManager.update(entity);
+                if(mListener != null)
+                	mListener.check(getSelectedEntities());
             }
         });
         jian.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +162,8 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
                 count.setText((cnt - 1) + "");
                 entity.cnt = cnt - 1;
                 mManager.update(entity);
+                if(mListener != null)
+                	mListener.check(getSelectedEntities());
             }
         });
 

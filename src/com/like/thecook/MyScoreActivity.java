@@ -77,6 +77,7 @@ public class MyScoreActivity extends BaseActivity {
     	mDataFetcher.fetchGetMyScore(mCurrentPage+"", new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				System.out.println(response);
 				Type type = new TypeToken<ListResult<MyScoreGood>>(){}.getType();
 				ListResult<MyScoreGood> result = GsonUtil.gson.fromJson(response.toString(), type);
 				List<GoodInfo> goods = new ArrayList<MyScoreGood.GoodInfo>();
@@ -84,6 +85,8 @@ public class MyScoreActivity extends BaseActivity {
 					goods.add(result.list.get(i).left);
 					goods.add(result.list.get(i).right);
 				}
+//				String text = "当前可用积分：  ";
+//		        mCurrentScore.setText(Html.fromHtml(text + "<font color='#bf4722'>345</font>"));
 				if(mAdapter == null) {
 					mAdapter = new GoodsAdapter(mContext, goods);
 					mGrid.setAdapter(mAdapter);

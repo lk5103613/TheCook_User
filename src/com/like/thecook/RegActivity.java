@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -16,6 +17,7 @@ import com.android.volley.Response.Listener;
 import com.dcjd.cook.R;
 import com.like.entity.LoginResult;
 import com.like.network.GsonUtil;
+import com.like.util.ValidateCodeUtil;
 import com.like.util.ValidateUtil;
 
 public class RegActivity extends BaseActivity {
@@ -26,6 +28,7 @@ public class RegActivity extends BaseActivity {
 	private TextView mTxtRepeatPwd;
 	private CheckBox mCheckAgree;
 	private boolean mIsAgree;
+	private String mValidateCode;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class RegActivity extends BaseActivity {
 				mIsAgree = isChecked;
 			}
 		});
+		mValidateCode = ValidateCodeUtil.getValidateCode();
 	}
 	
 	public void back(View v) {
@@ -52,6 +56,25 @@ public class RegActivity extends BaseActivity {
 		Intent intent = new Intent(mContext, LoginActivity.class);
 		startActivity(intent);
 		this.finish();
+	}
+	
+	public void sendCode(final View v) {
+		final String phone = mTxtPhone.getText().toString();
+		if(TextUtils.isEmpty(phone)) {
+			Toast.makeText(mContext, "请输入手机号", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if(!ValidateUtil.isMobileNO(phone)) {
+			Toast.makeText(mContext, "手机号码格式错误", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		mDataFetcher.fetchSendCode(phone, mValidateCode, new Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				Toast.makeText(mContext, "短信发送成功", Toast.LENGTH_SHORT).show();
+				v.setEnabled(false);
+			}
+		}, mErrorListener);
 	}
 	
 	public void reg(View v)	{
@@ -65,6 +88,10 @@ public class RegActivity extends BaseActivity {
 		}
 		if(!ValidateUtil.validatePhoneNum(phone)) {
 			Toast.makeText(mContext, "手机号码格式错误", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if(!mValidateCode.equals(verifyCode)) {
+			Toast.makeText(mContext, "输入的验证码有误", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		if(pwd.length() < 6 || pwd.length() > 16) {
