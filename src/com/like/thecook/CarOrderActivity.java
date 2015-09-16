@@ -14,6 +14,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -157,6 +158,11 @@ public class CarOrderActivity extends BaseActivity {
 				if (mCarEntities != null && mCarEntities.size() != 0) {
 					json = GsonUtil.gson.toJson(mCarEntities);
 				}
+				final String payMethod = mLblPay.getText().toString();
+				if(TextUtils.isEmpty(payMethod)) {
+					Toast.makeText(mContext, "请选择支付方式", Toast.LENGTH_SHORT).show();
+					return;
+				}
 				mDataFetcher.fetchSaveOrder(uid, diningTime, serviceCnt,
 						kitCnt, specialComment, json,
 						new Listener<JSONObject>() {
@@ -165,14 +171,20 @@ public class CarOrderActivity extends BaseActivity {
 								LoginResult result = GsonUtil.gson.fromJson(
 										response.toString(), LoginResult.class);
 								if (result.code == 1) {
-									Toast toast = Toast.makeText(
-											getApplicationContext(),
-											"转向支付宝...", Toast.LENGTH_LONG);
-									toast.setGravity(Gravity.CENTER, 0, 0);
-									toast.show();
-									
-									Intent intent = new Intent(mContext, AliPayActivity.class);
-									startActivity(intent);
+									if(payMethod.equals("支付宝")) {
+										Toast toast = Toast.makeText(
+												getApplicationContext(),
+												"转向支付宝...", Toast.LENGTH_LONG);
+										toast.setGravity(Gravity.CENTER, 0, 0);
+										toast.show();
+										
+										Intent intent = new Intent(mContext, AliPayActivity.class);
+										startActivity(intent);
+									} else {
+										Intent intent = new Intent(mContext, IndexActivity.class);
+										intent.putExtra("tab_index", 3);
+										startActivity(intent);
+									}
 								} else {
 									Toast toast = Toast.makeText(
 											getApplicationContext(), "提交失败",
@@ -236,7 +248,7 @@ public class CarOrderActivity extends BaseActivity {
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
 					R.layout.dropdown_option_item, options);
 			optionList.setAdapter(adapter);
-			mPayWindow = new PopupWindow(view, 300, 200);
+			mPayWindow = new PopupWindow(view, 400, 200);
 			optionList.setOnItemClickListener(new OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
@@ -250,7 +262,7 @@ public class CarOrderActivity extends BaseActivity {
 		mPayWindow.setOutsideTouchable(true);
 		mPayWindow.setBackgroundDrawable(new BitmapDrawable());
 		backgroundAlpha(1);
-		mPayWindow.showAsDropDown(mDropdownPay, -200, 0);
+		mPayWindow.showAsDropDown(mDropdownPay, -300, 0);
 	}
 
 	public List<String> getNumbers() {
@@ -266,7 +278,7 @@ public class CarOrderActivity extends BaseActivity {
 	public List<String> getPays() {
 		List<String> pays = new ArrayList<String>();
 		pays.add("支付宝");
-		pays.add("银行卡");
+		pays.add("上门支付");
 		return pays;
 	}
 
@@ -429,12 +441,6 @@ public class CarOrderActivity extends BaseActivity {
 				mTime = times[position];
 			}
 		});
-	}
-
-	public void pay(View v) {
-		//to alipay
-		Intent intent = new Intent(this, AliPayActivity.class);
-		startActivity(intent);
 	}
 
 	public void setListViewHeightBasedOnChildren(ListView listView) {

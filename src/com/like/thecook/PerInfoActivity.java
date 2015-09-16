@@ -64,12 +64,13 @@ public class PerInfoActivity extends BaseActivity implements OnClickListener {
 		mFromPhone.setOnClickListener(this);
 		mCancel.setOnClickListener(this);
 		
+		setupView();
+		
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		setupView();
 	}
 
 	@Override
@@ -119,7 +120,6 @@ public class PerInfoActivity extends BaseActivity implements OnClickListener {
 						mDataFetcher.fetchUpdateAvatar(mImgPath, mUID, new Listener<JSONObject>() {
 							@Override
 							public void onResponse(JSONObject response) {
-								System.out.println(response);
 								LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 								if(result.code == 1) {
 									Toast.makeText(mContext, "更新头像成功", Toast.LENGTH_LONG).show();
@@ -172,7 +172,6 @@ public class PerInfoActivity extends BaseActivity implements OnClickListener {
 							mDataFetcher.fetchUpdateAvatar(mImgPath, mUID, new Listener<JSONObject>() {
 								@Override
 								public void onResponse(JSONObject response) {
-									System.out.println(response);
 									LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 									if(result.code == 1) {
 										Toast.makeText(mContext, "更新头像成功", Toast.LENGTH_LONG).show();

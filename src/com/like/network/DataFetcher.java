@@ -277,5 +277,12 @@ public class DataFetcher {
                 errorListener);
         MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
     }
+    
+    public void fetchForgetPwd(String phone, String pwd, Listener<JSONObject> listener, ErrorListener errorListener) {
+    	String url = UrlParamGenerator.getPath(APIS.CHANGE_FORGET_PWD, phone, pwd);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, listener,
+                errorListener);
+        MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
+    }
 
 }

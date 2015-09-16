@@ -12,7 +12,7 @@ public class APIS {
 //    public static final String REG = BASE_URL + "/index.php/user/reg";
     
     public static final String GET_ORDER = BASE_URL + "/index.php/appI/orderPage?uid=%1";
-    public static final String GET_ORDER_DETAIL = BASE_URL + " /index.php/AppI/orderDetail?orderId=%1";
+    public static final String GET_ORDER_DETAIL = BASE_URL + "/index.php/AppI/orderDetail?orderId=%1";
     public static final String CONFIRM_ORDER = BASE_URL + "/index.php/AppI/confirmOrder?orderId=%1";
     public static final String SAVE_ORDER = BASE_URL + "/index.php/appOrder/saveOrder?uid=%1&dining_time=%2&servicer_usercnt=%3&kitchen_size=%4&special_memo=%5&json=%6";
     
@@ -47,5 +47,7 @@ public class APIS {
     public static final String SEND_CODE = "http://222.73.117.158/msg/HttpBatchSendSM?account=vip_lb_dcjd&pswd=vip_lb_dcjd001&mobile=%1&msg=%2&needstatus=true";
     
     public static final String GET_MS_DETAIL = BASE_URL + "/index.php/meishi/loadMeishi?meishiid=%1";
+    
+    public static final String CHANGE_FORGET_PWD = BASE_URL + "/index.php/AppUser/updatePwdByMp?mp=%1&newpwd=%2";
 
 }

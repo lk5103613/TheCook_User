@@ -18,6 +18,7 @@ import com.like.util.ValidateUtil;
 public class ChangePhoneActivity extends BaseActivity {
 	
 	private EditText mTxtPhone;
+	private EditText mTxtVerCode;
 	private String mPhoneNum;
 	private String mVerifyCode;
 
@@ -27,6 +28,7 @@ public class ChangePhoneActivity extends BaseActivity {
 		setContentView(R.layout.activity_change_phone);
 		mTxtPhone = (EditText) findViewById(R.id.edit_num);
 		mVerifyCode = ValidateCodeUtil.getValidateCode();
+		mTxtVerCode = (EditText) findViewById(R.id.edit_code);
 	}
 
 	public void back(View v) {
@@ -35,11 +37,19 @@ public class ChangePhoneActivity extends BaseActivity {
 	
 	public void changePhone(View v) {
 		String phone = mTxtPhone.getText().toString();
+		String verCode = mTxtVerCode.getText().toString();
 		if(TextUtils.isEmpty(phone)) {
 			Toast.makeText(mContext, "请输入手机号", Toast.LENGTH_SHORT).show();
 			return;
 		} else if(!ValidateUtil.validatePhoneNum(phone)) {
 			Toast.makeText(mContext, "您输入的手机号不符合要求", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		if(TextUtils.isEmpty(verCode)) {
+			Toast.makeText(mContext, "请输入验证码", Toast.LENGTH_SHORT).show();
+			return;
+		} else if(!verCode.equals(mVerifyCode)) {
+			Toast.makeText(mContext, "输入的验证码错误", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		mDataFetcher.fetchUpdatePhone(mUID, phone, new Listener<JSONObject>() {
@@ -66,6 +76,7 @@ public class ChangePhoneActivity extends BaseActivity {
 		mDataFetcher.fetchSendCode(phone, mVerifyCode, new Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				Toast.makeText(mContext, "已发送短信", Toast.LENGTH_SHORT).show();
 			}
 		}, mErrorListener);
 	}

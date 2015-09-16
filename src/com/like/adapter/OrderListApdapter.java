@@ -63,8 +63,6 @@ public class OrderListApdapter extends SimpleAdapter<Order>{
 		money.setText("￥："+ order.all_money);
 		serviceTime.setText("服务时间: " + order.dining_time);
 
-		
-		
 		orderDetail.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

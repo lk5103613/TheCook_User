@@ -18,11 +18,12 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DBContract.DB_NAME, null, DBContract.DB_VERSION);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-    	System.out.println("create db");
         db.execSQL(DBContract.ShoppingCartContract.SQL_CREATE_ENTRIES);
+        db.execSQL(DBContract.ProvienceContract.SQL_CREATE_ENTRIES);
+        db.execSQL(DBContract.CityContract.SQL_CREATE_ENTRIES);
+        db.execSQL(DBContract.DistrictsContract.SQL_CREATE_ENTRIES);
     }
 
     @Override

@@ -6,9 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +18,7 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
+
 import com.alipay.sdk.app.PayTask;
 import com.dcjd.cook.R;
 import com.like.entity.PayResult;
@@ -51,6 +54,10 @@ public class AliPayActivity extends FragmentActivity {
 				if (TextUtils.equals(resultStatus, "9000")) {
 					Toast.makeText(AliPayActivity.this, "支付成功",
 							Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(AliPayActivity.this, IndexActivity.class);
+					intent.putExtra("tab_index", 3);
+					startActivity(intent);
+					
 				} else {
 					// 判断resultStatus 为非“9000”则代表可能支付失败
 					// “8000”代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）

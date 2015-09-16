@@ -92,6 +92,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -109,6 +110,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/total_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -117,6 +119,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/pay_detail_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -126,6 +129,7 @@
 
 
             <TextView
+                android:id="@+id/dinner_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -135,6 +139,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/server_cnt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -143,6 +148,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/kitchen_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -151,6 +157,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/canju_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -159,6 +166,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/pay_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
@@ -167,6 +175,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/special_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip"
