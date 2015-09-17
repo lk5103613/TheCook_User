@@ -133,12 +133,12 @@ public class CarOrderActivity extends BaseActivity {
 				String serviceCnt = mLblNumber.getText().toString();
 				String specialComment = special_memoEt.getText().toString();
 				String kitCnt = mArea.getText().toString();
-				String json = "";
+				final String[] json = new String[1];
 				if (mCarEntities != null && mCarEntities.size() != 0) {
-					json = GsonUtil.gson.toJson(mCarEntities);
+					json[0] = GsonUtil.gson.toJson(mCarEntities);
 				}
 				mDataFetcher.fetchSaveOrder(uid, diningTime, serviceCnt,
-						kitCnt, specialComment, json,
+						kitCnt, specialComment, json[0],
 						new Listener<JSONObject>() {
 							@Override
 							public void onResponse(JSONObject response) {
@@ -152,6 +152,7 @@ public class CarOrderActivity extends BaseActivity {
 									toast.show();
 									
 									Intent intent = new Intent(mContext, AliPayActivity.class);
+									intent.putExtra("car_entities", json[0]);
 									startActivity(intent);
 								} else {
 									Toast toast = Toast.makeText(

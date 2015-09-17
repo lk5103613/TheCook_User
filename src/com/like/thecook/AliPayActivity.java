@@ -1,14 +1,19 @@
 package com.like.thecook;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,9 +21,14 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
+
 import com.alipay.sdk.app.PayTask;
 import com.dcjd.cook.R;
+import com.google.gson.reflect.TypeToken;
+import com.like.entity.CarEntity;
 import com.like.entity.PayResult;
+import com.like.entity.ShoppingCartEntity;
+import com.like.network.GsonUtil;
 import com.like.util.SignUtils;
 
 @SuppressLint("NewApi")
@@ -35,6 +45,8 @@ public class AliPayActivity extends FragmentActivity {
 	private static final int SDK_PAY_FLAG = 1;
 
 	private static final int SDK_CHECK_FLAG = 2;
+	
+	List<ShoppingCartEntity> mCarEntities;
 
 	private Handler mHandler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -83,6 +95,18 @@ public class AliPayActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pay_main);
+		
+		Intent intent = getIntent();
+		if(intent != null) {
+			if(intent.getStringExtra("selected_values") != null) {
+				String jsonArray = intent.getStringExtra("selected_values");
+				Type type = new TypeToken<List<ShoppingCartEntity>>(){}.getType();
+				mCarEntities = GsonUtil.gson.fromJson(jsonArray, type);
+			} else {
+				mCarEntities = new ArrayList<ShoppingCartEntity>();
+			}
+		}
+		
 		
 		pay();
 	}
