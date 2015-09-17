@@ -57,12 +57,9 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
 			int id = mCars.get(i).id;
 			if(isSelectAll) {
 				mCheckboxes.put(id, true);
-//				if(mCheckboxes.get(id) == null || !mCheckboxes.get(id))
 			}
 			else {
 				mCheckboxes.put(id, false);
-//				if(mCheckboxes.get(id) == null || mCheckboxes.get(id))
-//					mListener.check(getSelectedEntities());
 			}
 		}
 		mListener.check(getSelectedEntities());
@@ -87,8 +84,6 @@ public class CarListAdapter extends SimpleAdapter<ShoppingCartEntity>{
 	
 	public interface CheckListener {
 		void check(List<ShoppingCartEntity> selectedEntities);
-		
-//		void update();
 	}
 	
 	@Override

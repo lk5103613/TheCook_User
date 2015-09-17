@@ -33,6 +33,7 @@ public class InviteActivity extends BaseActivity {
 		oks.setUrl("http://sharesdk.cn");
 		oks.setComment("很好");
 		oks.setSilent(silent);
+//		oks.setImagePath("/sdcard/DCIM/Camera/1442039998051.jpg");
 		// 指定分享平台，和slient一起使用可以直接分享到指定的平台
 		if (platform != null) {
 			oks.setPlatform(platform);
@@ -52,7 +53,7 @@ public class InviteActivity extends BaseActivity {
 			showOnekeyshare(Wechat.NAME, false);
 			break;
 		case R.id.share_to_weibo:
-			showOnekeyshare(SinaWeibo.NAME, true);
+			showOnekeyshare(SinaWeibo.NAME, false);
 			break;
 		default:
 			break;
