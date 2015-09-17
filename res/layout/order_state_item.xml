@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.like.customeview.SelectedLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/status_0"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="10dip"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/state_icon"
+        android:layout_width="10dip"
+        android:layout_height="10dip"
+        android:background="@drawable/order_dot_selector" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp" >
+
+        <TextView
+            android:id="@+id/state_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="服务完成"
+            android:textColor="@color/order_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/state_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="right"
+            android:text="2015-7-01 11:01"
+            android:textColor="@color/order_text_color"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/light_gray" />
+    </RelativeLayout>
+
+</com.like.customeview.SelectedLinearLayout>
