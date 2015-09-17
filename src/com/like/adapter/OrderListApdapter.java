@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.dcjd.cook.R;
+import com.like.customeview.OrderStateView;
 import com.like.customeview.SelectedLinearLayout;
 import com.like.entity.Order;
 import com.like.thecook.MyOrderActivity;
@@ -20,7 +21,6 @@ public class OrderListApdapter extends SimpleAdapter<Order>{
 	
 	private List<Order> mOrders;
 	private Context mContext;
-	
 
 	public OrderListApdapter(Context context, List<Order> orders) {
 		super(context, orders);
@@ -41,22 +41,27 @@ public class OrderListApdapter extends SimpleAdapter<Order>{
 		TextView money = holder.findView(R.id.money);
 		TextView orderDetail = holder.findView(R.id.order_detail);
 		TextView serviceTime = holder.findView(R.id.service_time);
-		List<SelectedLinearLayout> selecteds = new ArrayList<SelectedLinearLayout>();
-		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_0));
-		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_1));
-		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_2));
-		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_3));
-		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_4));
-		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_5));
+		OrderStateView orderStateView = holder.findView(R.id.state_list);
+		orderStateView.removeAllViews();
+		System.out.println("state list" + order.stateList.size());
+		orderStateView.setOrderStates(order.stateList);
+		
+//		List<SelectedLinearLayout> selecteds = new ArrayList<SelectedLinearLayout>();
+//		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_0));
+//		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_1));
+//		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_2));
+//		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_3));
+//		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_4));
+//		selecteds.add((SelectedLinearLayout)holder.findView(R.id.status_5));
 		
 		
-		for (int i = 0; i < 6; i++) {
-			if ( i == order.status) {
-				selecteds.get(i).setSelected(true);
-			} else {
-				selecteds.get(i).setSelected(false);
-			}
-		}
+//		for (int i = 0; i < 6; i++) {
+//			if ( i == order.status) {
+//				selecteds.get(i).setSelected(true);
+//			} else {
+//				selecteds.get(i).setSelected(false);
+//			}
+//		}
 		
 		number.setText("订单号: "+order.order_no);
 		name.setText("套餐名称: " + "");

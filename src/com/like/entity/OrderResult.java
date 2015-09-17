@@ -7,6 +7,4 @@ public class OrderResult {
 	public int size;
 	public List<Order> list;
 	
-	
-
 }

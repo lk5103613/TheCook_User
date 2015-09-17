@@ -1,5 +1,7 @@
 package com.like.entity;
 
+import java.util.List;
+
 public class Order {
 
 	public String  json;//传递购物车商品转成的json字符串 到服务器
@@ -24,4 +26,5 @@ public class Order {
 	public String addtime2;
 	public String productCnt;
 	public String logoStr;
+	public List<OrderState> stateList;
 }
