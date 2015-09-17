@@ -58,20 +58,25 @@ public class MyOrderActivity extends BaseActivity {
 	}
 	
 	public void confirmOrder(View v) {
+		showLoading(true);
 		mDataFetcher.fetchConfirmOrder(orderId, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				OperationResult operationResult = GsonUtil.gson.fromJson(response.toString(), OperationResult.class);
 				if (operationResult.code ==1) {
 					Toast.makeText(mContext, "确认订单成功", Toast.LENGTH_LONG).show();
 				} else {
 					Toast.makeText(mContext, "确认订单失败", Toast.LENGTH_LONG).show();
 				}
+				
 			}
 		},new ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				showLoading(false);
 				Toast.makeText(mContext, "确认订单失败", Toast.LENGTH_LONG).show();
+				
 			}
 		});
 	}
@@ -81,9 +86,11 @@ public class MyOrderActivity extends BaseActivity {
 	}
 	
 	private void initData(){
+		showLoading(true);
 		mDataFetcher.fetchOrderDetail(orderId, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				Order order = GsonUtil.gson.fromJson(response.toString(), Order.class);
 				mLblKitchenSize.setText("厨房面积："+order.kitchen_size+"平");
 				mLblPrice.setText("订单总额：￥"+order.all_money);
@@ -103,6 +110,8 @@ public class MyOrderActivity extends BaseActivity {
 				} else {
 					mLblCJType.setText("需要带餐厨具：西式");
 				}
+				
+				
 			}
 		}, mErrorListener);
 	}

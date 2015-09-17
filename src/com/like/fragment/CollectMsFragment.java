@@ -66,10 +66,11 @@ public class CollectMsFragment extends BaseFragment {
 	}
 
 	private void updateMenu() {
+		showLoading(true);
 		mDataFetcher.fetchCollectedMS(mUID, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				System.out.println(response);
+				showLoading(false);
 				Type type = new TypeToken<ListResult<MenuEntity>>() {
 				}.getType();
 				ListResult<MenuEntity> menuList = GsonUtil.gson.fromJson(
@@ -80,12 +81,7 @@ public class CollectMsFragment extends BaseFragment {
 				if (mMenuListView.isRefreshing())
 					mMenuListView.onRefreshComplete();
 			}
-		}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
-			}
-		});
+		}, mErrorListener);
 	}	
 
 }

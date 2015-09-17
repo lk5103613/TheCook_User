@@ -44,9 +44,12 @@ public class ChangePwdActivity extends BaseActivity {
 			Toast.makeText(mContext, "两次密码不一致", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		
+		showLoading(true);
 		mDataFetcher.fetchChangePwd(oldPwd, newPwd, new Listener<JSONObject>(){
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 				if(result.code == 1) {
 					Toast.makeText(mContext, "修改成功", Toast.LENGTH_LONG).show();

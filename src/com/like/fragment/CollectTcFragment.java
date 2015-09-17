@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ import com.like.entity.MenuEntity;
 import com.like.network.DataFetcher;
 import com.like.network.GsonUtil;
 
-public class CollectTcFragment extends Fragment {
+public class CollectTcFragment extends BaseFragment {
 
 	private PullToRefreshListView mMenuListView;
 	private LinearLayout mFooterView;
@@ -42,11 +41,12 @@ public class CollectTcFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View layout = inflater.inflate(R.layout.tc_fragment, container, false);
-		
+
 		mContext = getActivity();
 		mDataFetcher = DataFetcher.getInstance(mContext);
 
-		mMenuListView = (PullToRefreshListView) layout.findViewById(R.id.menu_list);
+		mMenuListView = (PullToRefreshListView) layout
+				.findViewById(R.id.menu_list);
 		mMenuListView.setMode(Mode.BOTH);
 		mMenuListView.setOnRefreshListener(new OnRefreshListener2<ListView>() {
 			@Override
@@ -64,31 +64,30 @@ public class CollectTcFragment extends Fragment {
 		});
 		mFooterView = (LinearLayout) LayoutInflater.from(getActivity())
 				.inflate(R.layout.menu_list_footer, null);
-//		mMenuListView.addFooterView(mFooterView);
+		// mMenuListView.addFooterView(mFooterView);
 		updateMenu();
 		return layout;
 	}
 
 	private void updateMenu() {
+		showLoading(true);
 		mDataFetcher.fetchMenu(0, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				Type type = new TypeToken<ListResult<MenuEntity>>() {
 				}.getType();
 				ListResult<MenuEntity> menuList = GsonUtil.gson.fromJson(
 						response.toString(), type);
-				mAdapter = new MenuListAdapter(mContext,
-						mContext, menuList.resultList);
+				mAdapter = new MenuListAdapter(mContext, mContext,
+						menuList.resultList);
 				mMenuListView.setAdapter(mAdapter);
-			if (mMenuListView.isRefreshing())
+				if (mMenuListView.isRefreshing())
 					mMenuListView.onRefreshComplete();
+				
+				
 			}
-		}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
-			}
-		});
-	}	
+		}, mErrorListener);
+	}
 
 }

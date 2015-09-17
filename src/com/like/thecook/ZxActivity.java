@@ -65,9 +65,11 @@ public class ZxActivity extends BaseActivity {
 	}
 	
 	private void updateList() {
+		showLoading(true);
 		mDataFetcher.fetchZXList(mCurrentPage+"", new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				Type type = new TypeToken<ListResult<ZXEntity>>(){}.getType();
 				ListResult<ZXEntity> zxs = GsonUtil.gson.fromJson(response.toString(), type);
 				if(mAdapter == null) {

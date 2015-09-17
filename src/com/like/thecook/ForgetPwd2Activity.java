@@ -36,9 +36,11 @@ public class ForgetPwd2Activity extends BaseActivity {
 			Toast.makeText(mContext, "两次密码不一致", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		showLoading(true);
 		mDataFetcher.fetchForgetPwd(mPhoneNum, newPwd, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				CommonResult result = GsonUtil.gson.fromJson(response.toString(), CommonResult.class);
 				if(result.code == 1) {
 					Toast.makeText(mContext, "修改密码成功", Toast.LENGTH_SHORT).show();

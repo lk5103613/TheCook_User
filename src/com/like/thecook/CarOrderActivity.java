@@ -163,6 +163,7 @@ public class CarOrderActivity extends BaseActivity {
 					Toast.makeText(mContext, "请选择支付方式", Toast.LENGTH_SHORT).show();
 					return;
 				}
+				showLoading(true);
 				mDataFetcher.fetchSaveOrder(uid, diningTime, serviceCnt,
 						kitCnt, specialComment, json,
 						new Listener<JSONObject>() {
@@ -170,6 +171,7 @@ public class CarOrderActivity extends BaseActivity {
 							public void onResponse(JSONObject response) {
 								LoginResult result = GsonUtil.gson.fromJson(
 										response.toString(), LoginResult.class);
+								showLoading(false);
 								if (result.code == 1) {
 									if(payMethod.equals("支付宝")) {
 										Toast toast = Toast.makeText(
@@ -193,6 +195,7 @@ public class CarOrderActivity extends BaseActivity {
 									toast.show();
 								}
 							}
+							
 						}, mErrorListener);
 
 			}

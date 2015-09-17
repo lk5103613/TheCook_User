@@ -51,6 +51,8 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:background="@color/white"
-        android:text="拨打电 400-000-000 赶紧预定吧 ~~"/>
+        android:text="拨打电 40067654634 赶紧预定吧 ~~"
+        android:clickable="true"
+        android:onClick="call"/>
 
 </LinearLayout>

@@ -66,9 +66,11 @@ public class TaoCanInfoActivity extends BaseActivity {
 	}
 
 	private void updateMenu() {
+		showLoading(true);
 		mDataFetcher.fetchMenu(0, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				System.out.println(response);
 				Type type = new TypeToken<ListResult<MenuEntity>>() {}.getType();
 				ListResult<MenuEntity> menuList = GsonUtil.gson.fromJson(
@@ -87,6 +89,7 @@ public class TaoCanInfoActivity extends BaseActivity {
 		}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				showLoading(false);
 				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
 			}
 		});
@@ -94,6 +97,11 @@ public class TaoCanInfoActivity extends BaseActivity {
 	
 	public void back(View v) {
 		this.finish();
+	}
+	
+	public void call(View v) {
+		System.out.println("call");
+		callNumber();
 	}
 
 }

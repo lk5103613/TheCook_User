@@ -117,9 +117,11 @@ public class PerInfoActivity extends BaseActivity implements OnClickListener {
 					
 					@Override
 					protected void onPostExecute(String result) {
+						showLoading(true);
 						mDataFetcher.fetchUpdateAvatar(mImgPath, mUID, new Listener<JSONObject>() {
 							@Override
 							public void onResponse(JSONObject response) {
+								showLoading(false);
 								LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 								if(result.code == 1) {
 									Toast.makeText(mContext, "更新头像成功", Toast.LENGTH_LONG).show();
@@ -169,9 +171,11 @@ public class PerInfoActivity extends BaseActivity implements OnClickListener {
 						
 						@Override
 						protected void onPostExecute(String result) {
+							showLoading(true);
 							mDataFetcher.fetchUpdateAvatar(mImgPath, mUID, new Listener<JSONObject>() {
 								@Override
 								public void onResponse(JSONObject response) {
+									showLoading(false);
 									LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 									if(result.code == 1) {
 										Toast.makeText(mContext, "更新头像成功", Toast.LENGTH_LONG).show();

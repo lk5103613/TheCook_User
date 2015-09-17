@@ -41,9 +41,11 @@ public class ForgetPwdActivity extends BaseActivity {
 			Toast.makeText(mContext, "输入的手机号格式错误", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		showLoading(true);
 		mDataFetcher.fetchSendCode(phone, mVerCode, new Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				showLoading(false);
 				Toast.makeText(mContext, "发送成功", Toast.LENGTH_SHORT).show();
 			}
 		}, mErrorListener);

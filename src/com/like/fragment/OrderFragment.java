@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,7 +30,7 @@ import com.like.network.DataFetcher;
 import com.like.network.GsonUtil;
 import com.like.thecook.BaseActivity;
 
-public class OrderFragment extends Fragment {
+public class OrderFragment extends BaseFragment {
 	private PullToRefreshListView mOrderListView;
 	private OrderListApdapter mApdapter;
 	private DataFetcher mDataFetcher;
@@ -77,21 +76,27 @@ public class OrderFragment extends Fragment {
 	private void refreshData(){
 		mOrders = new ArrayList<Order>();
 		String uid = mSharePref.getString(BaseActivity.UID, "");
+		
+		showLoading(true);
 		mDataFetcher.fetchOrder(uid, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				System.out.println(response.toString());
 				OrderResult orderResult = GsonUtil.gson.fromJson(response.toString(), OrderResult.class);
 				mOrders.clear();
 				mOrders.addAll(orderResult.list);
 				mApdapter.notifyDataSetChanged();
 				mOrderListView.onRefreshComplete();
+				
 			}
 		},new ErrorListener() {
 
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				showLoading(false);
 				mOrderListView.onRefreshComplete();
+				
 			}
 			
 		});

@@ -52,9 +52,12 @@ public class ChangePhoneActivity extends BaseActivity {
 			Toast.makeText(mContext, "输入的验证码错误", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		
+		showLoading(true);
 		mDataFetcher.fetchUpdatePhone(mUID, phone, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 				if(result.code == 1) {
 					Toast.makeText(mContext, "修改成功", Toast.LENGTH_SHORT).show();
@@ -73,10 +76,13 @@ public class ChangePhoneActivity extends BaseActivity {
 			Toast.makeText(mContext, "您输入的手机号不符合要求", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		showLoading(true);
 		mDataFetcher.fetchSendCode(phone, mVerifyCode, new Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				showLoading(false);
 				Toast.makeText(mContext, "已发送短信", Toast.LENGTH_SHORT).show();
+				
 			}
 		}, mErrorListener);
 	}

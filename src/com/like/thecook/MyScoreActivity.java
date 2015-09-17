@@ -74,9 +74,11 @@ public class MyScoreActivity extends BaseActivity {
     }
     
     private void updateList() {
+    	showLoading(true);
     	mDataFetcher.fetchGetMyScore(mCurrentPage+"", new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				System.out.println(response);
 				Type type = new TypeToken<ListResult<MyScoreGood>>(){}.getType();
 				ListResult<MyScoreGood> result = GsonUtil.gson.fromJson(response.toString(), type);

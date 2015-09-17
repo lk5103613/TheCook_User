@@ -51,4 +51,23 @@ public class BaseFragment extends Fragment {
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 	
+	
+	public void showLoading(boolean show) {
+		if(show) {
+			if(mLoadingDialog == null) {
+				mLoadingDialog = new ProgressDialog(getActivity());
+				mLoadingDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+				mLoadingDialog.setMessage("请等待");
+			}
+			if (!mLoadingDialog.isShowing()) {
+				mLoadingDialog.show();
+			}
+			
+		} else {
+			if(mLoadingDialog == null)
+				return;
+			if(mLoadingDialog.isShowing()) 
+				mLoadingDialog.dismiss();
+		}
+	}
 }

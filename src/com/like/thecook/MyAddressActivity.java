@@ -77,9 +77,11 @@ public class MyAddressActivity extends BaseActivity {
 	}
 	
 	private void updateList() {
+		showLoading(true);
 		mDataFetcher.fetchAddress(mUID, new Listener<JSONArray>() {
 			@Override
 			public void onResponse(JSONArray response) {
+				showLoading(false);
 				Type type = new TypeToken<List<Address>>(){}.getType();
 				List<Address> addresses = GsonUtil.gson.fromJson(response.toString(), type);
 				if(mAdapter == null) {

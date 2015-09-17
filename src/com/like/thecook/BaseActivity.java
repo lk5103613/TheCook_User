@@ -82,7 +82,10 @@ public class BaseActivity extends Activity {
 				mLoadingDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 				mLoadingDialog.setMessage("请等待");
 			}
-			mLoadingDialog.show();
+			if (!mLoadingDialog.isShowing()) {
+				mLoadingDialog.show();
+			}
+			
 		} else {
 			if(mLoadingDialog == null)
 				return;

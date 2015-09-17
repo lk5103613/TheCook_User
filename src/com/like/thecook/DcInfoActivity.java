@@ -95,21 +95,28 @@ public class DcInfoActivity extends BaseActivity {
 	}
 
 	private void updateDCDetail() {
+		showLoading(true);
 		mDataFetcher.fetchDCDetail(mCId, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				 showLoading(false);
 				DCEntity dcEntity = GsonUtil.gson.fromJson(response.toString(), DCEntity.class);
 				updateUI(dcEntity);
 				updateList(dcEntity);
                 if(mCommentListView.isRefreshing())
                     mCommentListView.onRefreshComplete();
+                
+               
 			}
 		}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				showLoading(false);
 				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
 				if(mCommentListView.isRefreshing())
 					mCommentListView.onRefreshComplete();
+				
+				
 			}
 		});
 	}
@@ -136,9 +143,11 @@ public class DcInfoActivity extends BaseActivity {
 	}
 	
 	public void collect(View v) {
+		showLoading(true);
 		mDataFetcher.fetchCollectDC(mUID, mCId+"", new Listener<JSONObject>(){
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 				if(result.code != 1) {
 					Toast.makeText(mContext, "收藏失败", Toast.LENGTH_LONG).show();

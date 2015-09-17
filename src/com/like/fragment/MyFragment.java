@@ -125,9 +125,11 @@ public class MyFragment extends BaseFragment {
 	}
 	
 	private void getPerInfo() {
+		showLoading(true);
 		mDataFetcher.fetchPerInfo(mUID, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				mPerson = GsonUtil.gson.fromJson(response.toString(), PersonInfo.class);
 				setupView(mPerson);
 			}

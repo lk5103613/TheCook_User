@@ -32,7 +32,7 @@ import com.like.network.DataFetcher;
 import com.like.network.GsonUtil;
 import com.like.thecook.BaseActivity;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends BaseFragment {
 
     private Context mContext;
     private Context mApplicationContext;
@@ -81,9 +81,11 @@ public class MenuFragment extends Fragment {
 	}
 
     private void updateMenu() {
+    	showLoading(true);
         mDataFetcher.fetchMenu(0, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+            	showLoading(false);
                 Type type = new TypeToken<ListResult<MenuEntity>>(){}.getType();
                 ListResult<MenuEntity> menuList = GsonUtil.gson.fromJson(response.toString(), type);
                 if(mAdapter == null) {
@@ -99,6 +101,7 @@ public class MenuFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+            	showLoading(false);
                 Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
             }
         });

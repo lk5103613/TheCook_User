@@ -18,7 +18,7 @@ import com.like.entity.Order;
 import com.like.network.DataFetcher;
 import com.like.network.GsonUtil;
 
-public class OrderInfoActivity extends Activity {
+public class OrderInfoActivity extends BaseActivity {
 	private DataFetcher mDataFetcher;
 	private String orderId;
 
@@ -51,14 +51,19 @@ public class OrderInfoActivity extends Activity {
 	}
 	
 	private void initData(){
+		showLoading(true);
 		mDataFetcher.fetchOrderDetail(orderId, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
 				Order order = GsonUtil.gson.fromJson(response.toString(), Order.class);
+				
+				showLoading(false);
 			}
 		}, new ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				
+				showLoading(false);
 			}
 		});
 	}

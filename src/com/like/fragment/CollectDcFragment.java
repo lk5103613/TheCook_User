@@ -54,12 +54,12 @@ public class CollectDcFragment extends BaseFragment {
 	}
 
 	private void updateDC() {
-		System.out.println(mUID);
+		showLoading(true);
 		mDataFetcher.fetchCollectedDC(mUID, 
 				new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {
-						System.out.println(response);
+						showLoading(false);
 						Type type = new TypeToken<ListResult<DCEntity>>(){}.getType();
 						ListResult<DCEntity> dcList = GsonUtil.gson.fromJson(
 								response.toString(), type);
@@ -69,13 +69,7 @@ public class CollectDcFragment extends BaseFragment {
 						if (mDCList.isRefreshing())
 							mDCList.onRefreshComplete();
 					}
-				}, new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG)
-								.show();
-					}
-				});
+				}, mErrorListener);
 
 	}
 

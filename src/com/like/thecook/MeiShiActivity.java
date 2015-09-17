@@ -98,9 +98,11 @@ public class MeiShiActivity extends BaseActivity {
 	}
 	
 	private void updateMSList() {
+		showLoading(true);
 		mDataFetcher.fetchMSList(mCurrentPage+"", new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				showLoading(false);
 				System.out.println(response);
 				Type type = new TypeToken<ListResult<Meishi>>(){}.getType();
 				ListResult<Meishi> meishis = GsonUtil.gson.fromJson(response.toString(), type);
@@ -118,6 +120,7 @@ public class MeiShiActivity extends BaseActivity {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_SHORT).show();
+				showLoading(false);
 				if(mMsList.isRefreshing())
 					mMsList.onRefreshComplete();
 			}

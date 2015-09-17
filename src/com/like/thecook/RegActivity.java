@@ -68,9 +68,11 @@ public class RegActivity extends BaseActivity {
 			Toast.makeText(mContext, "手机号码格式错误", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		showLoading(true);
 		mDataFetcher.fetchSendCode(phone, mValidateCode, new Listener<String>() {
 			@Override
 			public void onResponse(String response) {
+				showLoading(false);
 				Toast.makeText(mContext, "短信发送成功", Toast.LENGTH_SHORT).show();
 				v.setEnabled(false);
 			}

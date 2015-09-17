@@ -52,9 +52,11 @@ public class MyCardActivity extends BaseActivity {
     }
     
     private void updateList() {
+    	showLoading(true);
     	mDataFetcher.fetchGetMyCard(mUID, new Listener<JSONArray>() {
 			@Override
 			public void onResponse(JSONArray response) {
+				showLoading(false);
 				Type type = new TypeToken<List<MyCardEntity>>(){}.getType();
 				List<MyCardEntity> entities = GsonUtil.gson.fromJson(response.toString(), type);
 				if(mAdapter == null) {

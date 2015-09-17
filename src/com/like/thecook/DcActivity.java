@@ -4,10 +4,12 @@ import java.lang.reflect.Type;
 
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.tv.TvContract.Programs;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -108,10 +110,12 @@ public class DcActivity extends BaseActivity {
 	}
 
     private void updateDC() {
+    	showLoading(true);
         mDataFetcher.fetchDCInfo(Request.Method.POST, mCurrentPage, mCurrentCaixi, mCurrentLocation, mCurrentCnt,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                    	showLoading(false);
                         Type type = new TypeToken<ListResult<DCEntity>>(){}.getType();
                         ListResult<DCEntity> dcList = GsonUtil.gson.fromJson(response.toString(), type);
                         if(mAdapter == null){
@@ -123,13 +127,9 @@ public class DcActivity extends BaseActivity {
                         }
                         if(mDCList.isRefreshing())
                             mDCList.onRefreshComplete();
+                        
                     }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
-                    }
-                });
+                }, mErrorListener);
     }
 
 

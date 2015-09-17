@@ -55,6 +55,7 @@ public class LoginActivity extends BaseActivity {
 			Toast.makeText(mContext, "密码必须长于6位", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		showLoading(true);
 		mDataFetcher.fetchLoginData(account, pwd, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
@@ -86,6 +87,7 @@ public class LoginActivity extends BaseActivity {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
+				showLoading(false);
 			}
 		});
 	}

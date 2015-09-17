@@ -204,10 +204,12 @@ public class EditAddressActivity extends BaseActivity {
 			Toast.makeText(mContext, "手机格式不正确", Toast.LENGTH_SHORT).show();
 			return;
 		}
+		showLoading(true);
 		mDataFetcher.fetchAddAddress(mUID, name, phoneNum, district, provience, city, detail, 
 				new Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {
+						showLoading(false);
 						LoginResult result = GsonUtil.gson.fromJson(response.toString(), LoginResult.class);
 						if(result.code == 1) {
 							Toast.makeText(mContext, "添加成功", Toast.LENGTH_LONG).show();
