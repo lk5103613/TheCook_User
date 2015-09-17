@@ -93,22 +93,31 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/share_to_qq"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:clickable="true"
+                android:onClick="share"
                 android:src="@drawable/qq"/>
             <ImageView
+                android:id="@+id/share_to_weibo"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:clickable="true"
+                android:onClick="share"
                 android:src="@drawable/weibo"/>
             <ImageView
+                android:id="@+id/share_to_wechat"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:clickable="true"
+                android:onClick="share"
                 android:src="@drawable/weixin"/>
 
 
