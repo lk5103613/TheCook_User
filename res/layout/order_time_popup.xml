@@ -25,11 +25,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <com.like.wheel.widget.views.WheelView
+        <!-- <com.like.wheel.widget.views.WheelView
             android:id="@+id/wheel2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1" /> -->
 
         <com.like.wheel.widget.views.WheelView
             android:id="@+id/wheel3"

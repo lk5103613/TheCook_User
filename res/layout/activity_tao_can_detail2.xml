@@ -161,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="7dp"
-                        android:background="@drawable/canju_option_bg"
+                        android:background="@drawable/canju_option_selected_bg"
                         android:text="中式"
                         android:textColor="#2f2f2f" />
 

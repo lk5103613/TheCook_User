@@ -31,7 +31,7 @@
 	            android:layout_alignParentRight="true"
 	            android:layout_centerVertical="true"
 	            android:gravity="center_vertical"
-	            android:paddingRight="15dp"
+	            android:layout_marginRight="15dp"
 	            android:text="注册"
 	            android:clickable="true"
 	            android:onClick="toReg"
@@ -91,6 +91,8 @@
 	        android:layout_marginLeft="25dp"
 	        android:layout_marginTop="15dp"
 	        android:textColor="#9d9d9d"
+	        android:clickable="true"
+	        android:onClick="forgetPwd"
 	        android:padding="5dp"
 	        android:text="忘记密码?"/>
 	    

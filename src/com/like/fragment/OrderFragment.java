@@ -80,6 +80,7 @@ public class OrderFragment extends Fragment {
 		mDataFetcher.fetchOrder(uid, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
+				System.out.println(response.toString());
 				OrderResult orderResult = GsonUtil.gson.fromJson(response.toString(), OrderResult.class);
 				mOrders.clear();
 				mOrders.addAll(orderResult.list);

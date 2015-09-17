@@ -57,6 +57,7 @@
         android:label="@string/app_name" >
         <activity
             android:name="com.like.thecook.IndexActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
@@ -219,6 +220,16 @@
             android:theme="@style/theme_activity" >
         </activity>
         <activity
+            android:name="com.like.thecook.ForgetPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/theme_activity" >
+        </activity>
+        <activity
+            android:name="com.like.thecook.ForgetPwd2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/theme_activity" >
+        </activity>
+        <activity
             android:name="com.like.thecook.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/theme_activity" >
@@ -229,7 +240,7 @@
             </intent-filter>
         </activity>
 
-<!--         	JPUSH START -->
+        <!-- JPUSH START -->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -317,10 +328,10 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="819120a2699ca6724e06e206" />
-<!--         	JPUSH END -->
+        <!-- JPUSH END -->
 
 
- <!-- alipay -->
+        <!-- alipay -->
         <activity
             android:name="com.like.thecook.AliPayActivity"
             android:theme="@style/theme_activity" >

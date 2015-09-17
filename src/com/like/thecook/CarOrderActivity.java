@@ -14,6 +14,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.like.adapter.CarOrderListAdapter;
 import com.like.entity.LoginResult;
+import com.like.entity.Meishi;
 import com.like.entity.ShoppingCartEntity;
+import com.like.entity.TCDetail;
 import com.like.network.GsonUtil;
 import com.like.storage.ShoppingCartManager;
 import com.like.util.DateUtil;
@@ -62,10 +65,12 @@ public class CarOrderActivity extends BaseActivity {
 	private TextView mTelTextView;
 	private TextView mLblPay;
 	private TextView mArea;
-	private WheelView mWheel1, mWheel2, mWheel3;
-	private ArrayWheelAdapter mAdapter1, mAdapter2, mAdapter3;
+	private WheelView mWheel1, mWheel3;
+//	private WheelView mWheel2;
+	private ArrayWheelAdapter mAdapter1, mAdapter3;
+//	private WheelView mAdapter2;
 	private String mMonth;
-	private String mWeek;
+//	private String mWeek;
 	private String mTime;
 	private CarOrderListAdapter mCarOrderAdapter;
 	private ListView mListView;
@@ -74,6 +79,11 @@ public class CarOrderActivity extends BaseActivity {
 
 	private ShoppingCartManager mManager;
 	private List<ShoppingCartEntity> mCarEntities;
+	private TextView mPrice;
+	
+	private Meishi mMS;
+	private TCDetail mTC;
+		
 
 	public static Gson gson = new Gson();
 	private Handler mHandler = null;
@@ -98,6 +108,7 @@ public class CarOrderActivity extends BaseActivity {
 		mArea = (TextView) findViewById(R.id.area);
 		mLblPay = (TextView) findViewById(R.id.lbl_pay);
 		mLblTime = (TextView) findViewById(R.id.lbl_time);
+		mPrice = (TextView) findViewById(R.id.price);
 
 		// test
 		layout1.setVisibility(View.VISIBLE);
@@ -108,6 +119,15 @@ public class CarOrderActivity extends BaseActivity {
 		mScreenHeight = getWindowManager().getDefaultDisplay().getHeight();
 		Intent intent = getIntent();
 		if(intent != null) {
+			String tcJson = intent.getStringExtra("tc");
+			String msJson = intent.getStringExtra("ms");
+			if(tcJson != null) {
+				mTC = GsonUtil.gson.fromJson(tcJson, TCDetail.class);
+				mPrice.setText("订单总额：￥" + mTC.price);
+			} else if(msJson != null) {
+				mMS = GsonUtil.gson.fromJson(msJson, Meishi.class);
+				mPrice.setText("订单总额：￥"+mMS.price);
+			}
 			if(intent.getStringExtra("selected_values") != null) {
 				String jsonArray = intent.getStringExtra("selected_values");
 				Type type = new TypeToken<List<ShoppingCartEntity>>(){}.getType();
@@ -129,31 +149,42 @@ public class CarOrderActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				String uid = mLoginSharef.getString(UID, "");
-				String diningTime = mMonth + " " + mWeek + " " + mTime;
+//				String diningTime = mMonth + " " + mWeek + " " + mTime;
+				String diningTime = mMonth + " " + mTime;
 				String serviceCnt = mLblNumber.getText().toString();
 				String specialComment = special_memoEt.getText().toString();
 				String kitCnt = mArea.getText().toString();
-				final String[] json = new String[1];
+				String json = "";
 				if (mCarEntities != null && mCarEntities.size() != 0) {
-					json[0] = GsonUtil.gson.toJson(mCarEntities);
+					json = GsonUtil.gson.toJson(mCarEntities);
+				}
+				final String payMethod = mLblPay.getText().toString();
+				if(TextUtils.isEmpty(payMethod)) {
+					Toast.makeText(mContext, "请选择支付方式", Toast.LENGTH_SHORT).show();
+					return;
 				}
 				mDataFetcher.fetchSaveOrder(uid, diningTime, serviceCnt,
-						kitCnt, specialComment, json[0],
+						kitCnt, specialComment, json,
 						new Listener<JSONObject>() {
 							@Override
 							public void onResponse(JSONObject response) {
 								LoginResult result = GsonUtil.gson.fromJson(
 										response.toString(), LoginResult.class);
 								if (result.code == 1) {
-									Toast toast = Toast.makeText(
-											getApplicationContext(),
-											"转向支付宝...", Toast.LENGTH_LONG);
-									toast.setGravity(Gravity.CENTER, 0, 0);
-									toast.show();
-									
-									Intent intent = new Intent(mContext, AliPayActivity.class);
-									intent.putExtra("car_entities", json[0]);
-									startActivity(intent);
+									if(payMethod.equals("支付宝")) {
+										Toast toast = Toast.makeText(
+												getApplicationContext(),
+												"转向支付宝...", Toast.LENGTH_LONG);
+										toast.setGravity(Gravity.CENTER, 0, 0);
+										toast.show();
+										
+										Intent intent = new Intent(mContext, AliPayActivity.class);
+										startActivity(intent);
+									} else {
+										Intent intent = new Intent(mContext, IndexActivity.class);
+										intent.putExtra("tab_index", 3);
+										startActivity(intent);
+									}
 								} else {
 									Toast toast = Toast.makeText(
 											getApplicationContext(), "提交失败",
@@ -184,7 +215,7 @@ public class CarOrderActivity extends BaseActivity {
 		int[] location = new int[2];
 		parent.getLocationOnScreen(location);
 
-		int popwidth = mScreenWidth / 6 * 4;
+		int popwidth = mScreenWidth / 6 * 2;
 		if (mTimeWindow == null) {
 			LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View view = layoutInflater.inflate(R.layout.order_time_popup, null);
@@ -195,7 +226,7 @@ public class CarOrderActivity extends BaseActivity {
 						@Override
 						public void onDismiss() {
 							backgroundAlpha(1);
-							mLblTime.setText(mMonth + " " + mWeek + " " + mTime);
+							mLblTime.setText(mMonth + "  " + mTime);
 						}
 					});
 		}
@@ -217,7 +248,7 @@ public class CarOrderActivity extends BaseActivity {
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
 					R.layout.dropdown_option_item, options);
 			optionList.setAdapter(adapter);
-			mPayWindow = new PopupWindow(view, 300, 200);
+			mPayWindow = new PopupWindow(view, 400, 200);
 			optionList.setOnItemClickListener(new OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
@@ -231,7 +262,7 @@ public class CarOrderActivity extends BaseActivity {
 		mPayWindow.setOutsideTouchable(true);
 		mPayWindow.setBackgroundDrawable(new BitmapDrawable());
 		backgroundAlpha(1);
-		mPayWindow.showAsDropDown(mDropdownPay, -200, 0);
+		mPayWindow.showAsDropDown(mDropdownPay, -300, 0);
 	}
 
 	public List<String> getNumbers() {
@@ -247,7 +278,7 @@ public class CarOrderActivity extends BaseActivity {
 	public List<String> getPays() {
 		List<String> pays = new ArrayList<String>();
 		pays.add("支付宝");
-		pays.add("银行卡");
+		pays.add("上门支付");
 		return pays;
 	}
 
@@ -346,10 +377,10 @@ public class CarOrderActivity extends BaseActivity {
 
 	private void initWheel(View parent) {
 		mWheel1 = (WheelView) parent.findViewById(R.id.wheel1);
-		mWheel2 = (WheelView) parent.findViewById(R.id.wheel2);
+//		mWheel2 = (WheelView) parent.findViewById(R.id.wheel2);
 		mWheel3 = (WheelView) parent.findViewById(R.id.wheel3);
 		mWheel1.setDrawShadow(false);
-		mWheel2.setDrawShadow(false);
+//		mWheel2.setDrawShadow(false);
 		mWheel3.setDrawShadow(false);
 
 		Calendar currentC = DateUtil.toCalendar(new Date());
@@ -367,21 +398,21 @@ public class CarOrderActivity extends BaseActivity {
 			weeks[i] = week;
 			if (i == 0) {
 				mMonth = months[0];
-				mWeek = weeks[0];
+//				mWeek = weeks[0];
 			}
 			currentC = DateUtil.getNextDay(currentC);
 		}
 
 		mAdapter1 = new ArrayWheelAdapter<String>(this, months, 50);
-		mAdapter2 = new ArrayWheelAdapter<String>(this, weeks, 50);
+//		mAdapter2 = new ArrayWheelAdapter<String>(this, weeks, 50);
 		mAdapter3 = new ArrayWheelAdapter<String>(this, times, 50);
 		mWheel1.setViewAdapter(mAdapter1);
-		mWheel2.setViewAdapter(mAdapter2);
+//		mWheel2.setViewAdapter(mAdapter2);
 		mWheel3.setViewAdapter(mAdapter3);
 
 		setCurrentItem(mWheel1.getCurrentItem(), mAdapter1, Gravity.RIGHT);
 
-		setCurrentItem(mWheel2.getCurrentItem(), mAdapter2, Gravity.CENTER);
+//		setCurrentItem(mWheel2.getCurrentItem(), mAdapter2, Gravity.CENTER);
 		setCurrentItem(mWheel3.getCurrentItem(), mAdapter3, Gravity.LEFT);
 
 		mWheel1.addChangingListener(new OnWheelChangedListener() {
@@ -393,14 +424,14 @@ public class CarOrderActivity extends BaseActivity {
 				mMonth = months[position];
 			}
 		});
-		mWheel2.addChangingListener(new OnWheelChangedListener() {
-			@Override
-			public void onChanged(WheelView wheel, int oldValue, int newValue) {
-				int position = wheel.getCurrentItem();
-				setCurrentItem(position, mAdapter2, Gravity.CENTER);
-				mWeek = weeks[position];
-			}
-		});
+//		mWheel2.addChangingListener(new OnWheelChangedListener() {
+//			@Override
+//			public void onChanged(WheelView wheel, int oldValue, int newValue) {
+//				int position = wheel.getCurrentItem();
+//				setCurrentItem(position, mAdapter2, Gravity.CENTER);
+//				mWeek = weeks[position];
+//			}
+//		});
 		mWheel3.addChangingListener(new OnWheelChangedListener() {
 			@Override
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
@@ -410,13 +441,6 @@ public class CarOrderActivity extends BaseActivity {
 				mTime = times[position];
 			}
 		});
-	}
-
-	public void pay(View v) {
-		
-		//to alipay
-		Intent intent = new Intent(this, AliPayActivity.class);
-		startActivity(intent);
 	}
 
 	public void setListViewHeightBasedOnChildren(ListView listView) {

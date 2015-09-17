@@ -7,15 +7,22 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
 import com.dcjd.cook.R;
 import com.google.gson.reflect.TypeToken;
 import com.like.adapter.MSAdapter;
+import com.like.adapter.MSPagerAdapter;
+import com.like.customeview.HackyViewPager;
 import com.like.customeview.pulldown.PullToRefreshBase;
 import com.like.customeview.pulldown.PullToRefreshBase.Mode;
 import com.like.customeview.pulldown.PullToRefreshBase.OnRefreshListener2;
@@ -28,6 +35,8 @@ public class MeiShiActivity extends BaseActivity {
 	
 	private int mCurrentPage = 0;
 	private MSAdapter mAdapter;
+	private HackyViewPager mPager;
+	private ViewGroup mDotContainer; 
 	
 	private PullToRefreshListView mMsList;
 
@@ -38,6 +47,24 @@ public class MeiShiActivity extends BaseActivity {
 		
 		mMsList = (PullToRefreshListView) findViewById(R.id.ms_list);
 		mMsList.setMode(Mode.BOTH);
+		mDotContainer = (ViewGroup) findViewById(R.id.dot_container);
+		mPager = (HackyViewPager) findViewById(R.id.viewpager);
+		mPager.setAdapter(new MSPagerAdapter(mContext));
+		mDotContainer.getChildAt(1).setSelected(true);
+		mPager.addOnPageChangeListener(new OnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				for(int i=0; i<mDotContainer.getChildCount()-1; i++) {
+					mDotContainer.getChildAt(i + 1).setSelected(false);
+				}
+				mDotContainer.getChildAt(position + 1).setSelected(true);
+			}
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) { }
+			@Override
+			public void onPageScrollStateChanged(int position) { }
+		});
+		
 		mMsList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View view, int position,
@@ -87,7 +114,14 @@ public class MeiShiActivity extends BaseActivity {
 				if(mMsList.isRefreshing())
 					mMsList.onRefreshComplete();
 			}
-		} , mErrorListener);
+		} , new ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_SHORT).show();
+				if(mMsList.isRefreshing())
+					mMsList.onRefreshComplete();
+			}
+		});
 	}
 	
 	public void jumpToCar(View v) {

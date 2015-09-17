@@ -18,7 +18,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="#C30D22" >
+        android:background="@color/primary_red_color" >
 
         <TextView
             android:layout_width="match_parent"
@@ -134,7 +134,7 @@
 		            android:layout_height="match_parent"
 		            android:gravity="center"
 		            android:textColor="@color/white"
-		            android:background="#f39800"
+		            android:background="#ff5500"
 		            android:text="结算(0)" />
 		        
 		    </LinearLayout>

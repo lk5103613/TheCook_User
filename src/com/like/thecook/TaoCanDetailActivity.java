@@ -56,6 +56,7 @@ public class TaoCanDetailActivity extends BaseActivity {
     private PopupWindow mDialog;
     private ViewGroup mAddCar;
     private String mMsId;
+    private Meishi mMS;
 //    private TextView mTxtReplyCount;
     
     private int mPackId;
@@ -148,19 +149,15 @@ public class TaoCanDetailActivity extends BaseActivity {
 		mPackageName.setText(detail.packname);
 		mPrice.setText(detail.price);
 		mSoldCount.setText(detail.sold_cnt);
-//		if(detail.commentList.size() == 0) 
-//			mTxtReplyCount.setVisibility(View.GONE);
-//		else
-//			mTxtReplyCount.setText("" + detail.commentList.size());
-//		if(detail.style == 0) {
-//			mBtnStyle0.setBackgroundResource(R.drawable.canju_select_bg);
-//			mBtnStyle1.setBackgroundResource(R.drawable.canju_unselect_bg);
-//		} else {
-//			mBtnStyle0.setBackgroundResource(R.drawable.canju_unselect_bg);
-//			mBtnStyle1.setBackgroundResource(R.drawable.canju_select_bg);
-//		}
 		mAdapter = new CommentAdapter(mContext, detail.commentList);
 		mList.setAdapter(mAdapter);
+		if(detail.style == 0) {
+			mBtnStyle1.setBackgroundResource(R.drawable.canju_option_bg);
+			mBtnStyle0.setBackgroundResource(R.drawable.canju_option_selected_bg);
+		} else {
+			mBtnStyle0.setBackgroundResource(R.drawable.canju_option_bg);
+			mBtnStyle1.setBackgroundResource(R.drawable.canju_option_selected_bg);
+		}
 	}
 	
 	private void showPopup() {
@@ -176,7 +173,7 @@ public class TaoCanDetailActivity extends BaseActivity {
 		showPopup();
 		if(mDetail == null)
 			return;
-        final ShoppingCartEntity entity = new ShoppingCartEntity(mDetail.packname, 96f, 1, 1, APIS.BASE_URL + mDetail.img_path);
+        final ShoppingCartEntity entity = new ShoppingCartEntity(mDetail.packname, Float.valueOf(mDetail.price), 1, 1, APIS.BASE_URL + mDetail.img_path);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -227,6 +224,14 @@ public class TaoCanDetailActivity extends BaseActivity {
 	
 	public void toOrderInfo(View v) {
 		Intent intent = new Intent(mContext, CarOrderActivity.class);
+		String json = "";
+		if(mDetail != null) {
+			json = GsonUtil.gson.toJson(mDetail);
+			intent.putExtra("tc", json);
+		} else if(mMS != null) {
+			json = GsonUtil.gson.toJson(mMS);
+			intent.putExtra("ms", json);
+		}
 		startActivity(intent);
 	}
 	

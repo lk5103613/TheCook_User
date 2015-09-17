@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,15 +39,17 @@ public class HomeFragment extends Fragment {
 	private Handler mHandler;
 	private boolean mNeedScroll = true;
 	private Dialog mDialog;
+	private ViewGroup mDotContainer;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View layout = inflater.inflate(R.layout.home_fragment, container, false);
-		
 		callLayout = (RelativeLayout) layout.findViewById(R.id.callLayout);
 		mLocation = (ViewGroup) layout.findViewById(R.id.location);
 		mViewPager = (HackyViewPager) layout.findViewById(R.id.view_pager);
 		mViewPager.setAdapter(new IndexBannerAdapter(getActivity()));
+		mDotContainer = (ViewGroup) layout.findViewById(R.id.dot_container);
+		mDotContainer.getChildAt(0).setSelected(true);
 		mScan = (ViewGroup) layout.findViewById(R.id.scan);
 		mScan.setOnClickListener(new OnClickListener() {
 			@Override
@@ -66,6 +69,23 @@ public class HomeFragment extends Fragment {
 					mViewPager.setCurrentItem(i % 4, true);
 				}
 				return false;
+			}
+		});
+		mViewPager.addOnPageChangeListener(new OnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				for(int i=0; i<mDotContainer.getChildCount(); i++) {
+					mDotContainer.getChildAt(i).setSelected(false);
+				}
+				mDotContainer.getChildAt(position).setSelected(true);
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
 		new Thread(new Runnable() {
@@ -142,6 +162,12 @@ public class HomeFragment extends Fragment {
 			}
 		});
 		return layout;
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		mNeedScroll = true;
 	}
 	
 	private void showDialog() {

@@ -21,12 +21,10 @@ import com.like.network.GsonUtil;
 
 public class LoginActivity extends BaseActivity {
 	
-	
 	private Context mContext;
 	private EditText mLblAccount;
 	private EditText mLblPwd;
 	private DataFetcher mDataFetcher;
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class LoginActivity extends BaseActivity {
 			startActivity(intent);
 			LoginActivity.this.finish();
 		}
-		
 		mLblAccount = (EditText) findViewById(R.id.lbl_account);
 		mLblPwd = (EditText) findViewById(R.id.lbl_pwd);
 		mDataFetcher = DataFetcher.getInstance(mContext);
@@ -54,10 +51,10 @@ public class LoginActivity extends BaseActivity {
 			return;
 		}
 		showLoading(true);
-//		if(pwd.trim().length() < 6) {
-//			Toast.makeText(mContext, "密码必须长于6位", Toast.LENGTH_SHORT).show();
-//			return;
-//		}
+		if(pwd.trim().length() < 6) {
+			Toast.makeText(mContext, "密码必须长于6位", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		mDataFetcher.fetchLoginData(account, pwd, new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
@@ -67,9 +64,7 @@ public class LoginActivity extends BaseActivity {
 					Toast.makeText(mContext, "用户名或密码不正确", Toast.LENGTH_LONG).show();
 					return;
 				} else {
-					
 					Toast.makeText(mContext, "登陆成功", Toast.LENGTH_LONG).show();
-					
 					new Thread(new Runnable() {
 						@Override
 						public void run() {
@@ -97,6 +92,14 @@ public class LoginActivity extends BaseActivity {
 	
 	public void toReg(View v) {
 		Intent intent = new Intent(mContext, RegActivity.class);
+		startActivity(intent);
+		this.finish();
+	}
+	
+	public void forgetPwd(View v) {
+		String account = mLblAccount.getText().toString();
+		Intent intent = new Intent(mContext, ForgetPwdActivity.class);
+		intent.putExtra("mp", account);
 		startActivity(intent);
 	}
 

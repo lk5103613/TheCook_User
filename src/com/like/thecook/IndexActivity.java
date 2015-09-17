@@ -79,7 +79,11 @@ public class IndexActivity extends FragmentActivity implements CarFragmentListen
 		fragmentManager = getSupportFragmentManager();
 		setTabSelection(0);
 
-		Intent intent = getIntent();
+	}
+	
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
 		if (intent != null) {
 			int index = intent.getIntExtra("tab_index", 0);
 			setTabSelection(index);

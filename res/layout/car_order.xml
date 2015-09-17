@@ -105,6 +105,7 @@
                         android:textSize="13sp" />
 
                     <TextView
+                        android:id="@+id/price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -482,7 +483,6 @@
                     android:background="@drawable/car_order_fk_btn"
                     android:clickable="true"
                     android:gravity="center"
-                    android:onClick="pay"
                     android:text="立即付款"
                     android:textColor="@android:color/white"
                     android:textSize="13sp" />

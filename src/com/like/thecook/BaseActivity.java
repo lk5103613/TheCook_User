@@ -51,6 +51,9 @@ public class BaseActivity extends Activity {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				Toast.makeText(mContext, "请检查网络", Toast.LENGTH_LONG).show();
+				if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
+					mLoadingDialog.dismiss();
+				}
 			}
 		};
 		mUID = mLoginSharef.getString(UID, "");

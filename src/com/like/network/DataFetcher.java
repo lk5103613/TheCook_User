@@ -116,6 +116,7 @@ public class DataFetcher {
 			json =  URLEncoder.encode(json, mChartName);
 			diningTime = URLEncoder.encode(diningTime, mChartName).replace("%3A", ":");
 			specialComment = URLEncoder.encode(specialComment, mChartName);
+			kitCnt = URLEncoder.encode(kitCnt, "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -256,21 +257,29 @@ public class DataFetcher {
         MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
     }
     
-    public void fetchSendCode(String phone, String msg, Listener<String> listener, ErrorListener errorListener) {
+    public void fetchSendCode(String phone, String code, Listener<String> listener, ErrorListener errorListener) {
+    	String msg = "【大厨家到】尊敬的用户您好,本次验证码是:" + code;
     	try {
-			msg = URLEncoder.encode(msg, mChartName);
+			msg = URLEncoder.encode(msg, "utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
     	String url = UrlParamGenerator.getPath(APIS.SEND_CODE, phone, msg);
     	System.out.println(url);
-        StringRequest request = new StringRequest(Request.Method.POST, url, listener,
+        StringRequest request = new StringRequest(Request.Method.GET, url, listener,
                 errorListener);
         MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
     }
     
     public void fetchMSDetail(String meishiId, Listener<JSONObject> listener, ErrorListener errorListener) {
     	String url = UrlParamGenerator.getPath(APIS.GET_MS_DETAIL, meishiId);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, listener,
+                errorListener);
+        MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
+    }
+    
+    public void fetchForgetPwd(String phone, String pwd, Listener<JSONObject> listener, ErrorListener errorListener) {
+    	String url = UrlParamGenerator.getPath(APIS.CHANGE_FORGET_PWD, phone, pwd);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, listener,
                 errorListener);
         MyNetworkUtil.getInstance(mApplicationContext).addToRequstQueue(request);
