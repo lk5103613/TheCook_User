@@ -43,7 +43,8 @@ public class OrderListApdapter extends SimpleAdapter<Order>{
 		TextView serviceTime = holder.findView(R.id.service_time);
 		OrderStateView orderStateView = holder.findView(R.id.state_list);
 		orderStateView.removeAllViews();
-		System.out.println("state list" + order.stateList.size());
+		if(order == null || order.stateList == null)
+			return;
 		orderStateView.setOrderStates(order.stateList);
 		
 //		List<SelectedLinearLayout> selecteds = new ArrayList<SelectedLinearLayout>();
@@ -63,10 +64,10 @@ public class OrderListApdapter extends SimpleAdapter<Order>{
 //			}
 //		}
 		
-		number.setText("订单号: "+order.order_no);
-		name.setText("套餐名称: " + "");
-		money.setText("￥："+ order.all_money);
-		serviceTime.setText("服务时间: " + order.dining_time);
+		number.setText(""+order.order_no);
+		name.setText("" + "");
+		money.setText("￥"+ order.all_money);
+		serviceTime.setText("" + order.dining_time);
 
 		orderDetail.setOnClickListener(new OnClickListener() {
 			@Override

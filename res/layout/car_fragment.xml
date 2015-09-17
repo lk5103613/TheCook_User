@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     android:orientation="vertical" >
 
     <com.like.customeview.pulldown.PullToRefreshListView
@@ -12,7 +11,7 @@
         android:layout_below="@id/toolbar"
         android:divider="@color/ll_gray"
         android:layout_marginBottom="90dp"
-        android:dividerHeight="4dp"/>
+        android:dividerHeight="7dp"/>
     
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -49,20 +48,22 @@
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
         android:orientation="vertical">
         
         <RelativeLayout android:id="@+id/add_more"
             android:layout_width="match_parent"
+            android:background="@android:color/transparent"
             android:layout_height="40dp">
             <TextView 
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:text="+ 挑选更多美食"
+	            android:background="#7f000000"
 		        android:textSize="15sp"
 		        android:gravity="center"
 		        android:padding="10dp"
-		        android:textColor="@color/white"
-		        android:background="#82000000"/>
+		        android:textColor="@color/white"/>
         </RelativeLayout>
         
         <RelativeLayout android:id="@+id/operate"
@@ -106,7 +107,7 @@
 		        android:layout_toRightOf="@+id/total"
 		        android:layout_centerVertical="true"
 		        android:layout_marginLeft="10dp"
-		        android:textColor="#f39800"
+		        android:textColor="#ff5000"
 		        android:text="￥0"/>
 		    
 		    <LinearLayout android:layout_width="match_parent"

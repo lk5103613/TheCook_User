@@ -96,6 +96,7 @@
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
                     android:onClick="toMyScore"
+                    android:padding="10dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -103,6 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
+                        android:adjustViewBounds="true"
                         android:src="@drawable/scroes"/>
 
                     <TextView
@@ -119,7 +121,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingBottom="10dp"
+                    android:padding="10dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -127,6 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
+                        android:adjustViewBounds="true"
                         android:src="@drawable/coupons"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -142,13 +145,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingBottom="10dp" >
+                    android:padding="10dp" >
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
+                        android:adjustViewBounds="true"
                         android:src="@drawable/recommand" />
 
                     <TextView

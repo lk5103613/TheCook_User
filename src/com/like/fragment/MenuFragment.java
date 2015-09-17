@@ -10,13 +10,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -37,8 +36,8 @@ public class MenuFragment extends BaseFragment {
     private Context mContext;
     private Context mApplicationContext;
 	private PullToRefreshListView mMenuListView;
-	private LinearLayout mFooterView;
 	private List<MenuEntity> mMenuEntities;
+	private TextView mBtnCall;
 	private MenuListAdapter mAdapter;
 	private Handler mHandler;
     private DataFetcher mDataFetcher;
@@ -48,15 +47,15 @@ public class MenuFragment extends BaseFragment {
 			Bundle savedInstanceState) {
 		View layout = inflater.inflate(R.layout.menu_fragment, container, false);
 		mMenuListView = (PullToRefreshListView) layout.findViewById(R.id.menu_list);
-		mFooterView = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.menu_list_footer, null);
-		mFooterView.setOnClickListener(new OnClickListener() {
+		mCall = (ViewGroup) layout.findViewById(R.id.call);
+		mBtnCall = (TextView) layout.findViewById(R.id.call_now);
+		mBtnCall.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+ BaseActivity.PHONE_NUMBER));  
+				Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+ BaseActivity.PHONE_NUMBER)); 
                 startActivity(intent);  
 			}
 		});
-		mCall = (ViewGroup) layout.findViewById(R.id.call);
 		mCall.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -68,7 +67,6 @@ public class MenuFragment extends BaseFragment {
         mContext = getActivity();
         mApplicationContext = getActivity().getApplicationContext();
         mDataFetcher = DataFetcher.getInstance(mApplicationContext);
-        mMenuListView.getRefreshableView().addFooterView(mFooterView);
 		mMenuListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
 			@Override
 			public void onRefresh(PullToRefreshBase<ListView> refreshView) {

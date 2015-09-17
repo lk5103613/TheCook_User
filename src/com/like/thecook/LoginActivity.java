@@ -51,10 +51,10 @@ public class LoginActivity extends BaseActivity {
 			return;
 		}
 		showLoading(true);
-		if(pwd.trim().length() < 6) {
-			Toast.makeText(mContext, "密码必须长于6位", Toast.LENGTH_SHORT).show();
-			return;
-		}
+//		if(pwd.trim().length() < 6) {
+//			Toast.makeText(mContext, "密码必须长于6位", Toast.LENGTH_SHORT).show();
+//			return;
+//		}
 		showLoading(true);
 		mDataFetcher.fetchLoginData(account, pwd, new Listener<JSONObject>() {
 			@Override

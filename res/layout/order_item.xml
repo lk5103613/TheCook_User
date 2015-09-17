@@ -17,41 +17,112 @@
             android:orientation="vertical"
             android:padding="10dp" >
 
-            <TextView
-                android:id="@+id/number"
-                android:layout_width="match_parent"
+            <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="订单号：021311242432532"
-                android:textColor="@android:color/black"
-                android:textSize="13sp"
-                android:padding="3dp" />
+                android:orientation="horizontal">
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_weight="2"
+	                android:layout_height="wrap_content"
+	                android:text="订 单 号"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+	            <TextView android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:text="：" />
+	            <TextView
+	                android:id="@+id/number"
+	                android:layout_width="0dp"
+	                android:layout_weight="5"
+	                android:layout_height="wrap_content"
+	                android:text="021311242432532"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+                
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_weight="2"
+	                android:layout_height="wrap_content"
+	                android:text="套餐名称"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+	            <TextView android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:text="：" />
+	            <TextView
+	                android:id="@+id/name"
+	                android:layout_width="0dp"
+	                android:layout_weight="5"
+	                android:layout_height="wrap_content"
+	                android:text="名称"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_weight="2"
+	                android:layout_height="wrap_content"
+	                android:text="价  格  "
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+	            <TextView android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:text="：" />
+	            <TextView
+	                android:id="@+id/money"
+	                android:layout_width="0dp"
+	                android:layout_weight="5"
+	                android:layout_height="wrap_content"
+	                android:text="345"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+	            <TextView
+	                android:layout_width="0dp"
+	                android:layout_weight="2"
+	                android:layout_height="wrap_content"
+	                android:text="服务时间"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+	            <TextView android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:text="：" />
+	            <TextView
+	                android:id="@+id/service_time"
+	                android:layout_width="0dp"
+	                android:layout_weight="5"
+	                android:layout_height="wrap_content"
+	                android:text="345"
+	                android:textColor="#3d4245"
+	                android:textSize="12sp"
+	                android:padding="3dp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="套餐名称：等"
-                android:textColor="@android:color/black"
-                android:padding="3dp"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/money"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="￥：345"
-                android:textColor="@android:color/black"
-                android:padding="3dp"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/service_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="服务时间：2015-5-6 12:20"
-                android:textColor="@android:color/black"
-                android:padding="3dp"
-                android:textSize="13sp" />
         </LinearLayout>
 
         <TextView

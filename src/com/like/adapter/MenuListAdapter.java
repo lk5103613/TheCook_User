@@ -44,17 +44,15 @@ public class MenuListAdapter extends SimpleAdapter<MenuEntity> {
 		
 		ImageView img = holder.findView(R.id.img);
 		TextView name = holder.findView(R.id.name);
-//		TextView count = holder.findView(R.id.count);
+		TextView count = holder.findView(R.id.count);
 		TextView money = holder.findView(R.id.money);
 		TextView orderNow = holder.findView(R.id.order_now);
-		TextView description = holder.findView(R.id.description);
 		
 		mImageLoader.get(APIS.BASE_URL + menu.img_path, ImageLoader.getImageListener(img,
 				R.color.white, R.color.white));
 		name.setText(menu.packname);
-//		count.setText(menu.sold_cnt+"");
+		count.setText(menu.sold_cnt+"");
 		money.setText(menu.price+"");
-		description.setText(menu.description);
 		
 		orderNow.setOnClickListener(new OnClickListener() {
 			@Override

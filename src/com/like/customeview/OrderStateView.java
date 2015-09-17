@@ -50,8 +50,8 @@ public class OrderStateView extends LinearLayout{
 			time.setText(orderStates.get(i).addTime);
 			addView(view);
 		}
-		
-		getChildAt(0).setSelected(true);
+		if(getChildCount() != 0)
+			getChildAt(0).setSelected(true);
 		
 	}
 
